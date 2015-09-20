@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/mainLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff" >
+
+    <RelativeLayout
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height_top"
+        android:layout_alignParentTop="true"
+        android:background="@color/common_title_top" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="闲聊"
+            android:textColor="#ffffff"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/iv_add"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:clickable="true"
+            android:src="@drawable/ac_home_add" />
+
+        <ImageView
+            android:id="@+id/iv_search"
+            android:layout_width="56dp"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/iv_add"
+            android:clickable="true"
+            android:src="@drawable/ac_home_search" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/home_bottoms"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/re_weixin"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onTabClicked"
+            android:padding="3dp" >
+
+            <ImageView
+                android:id="@+id/iv_weixin"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_centerHorizontal="true"
+                android:background="#ffffff"
+                android:focusable="false"
+                android:scaleType="centerInside"
+                android:src="@drawable/ac_home_tab_weixin" />
+
+            <TextView
+                android:id="@+id/tv_weixin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_weixin"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="闲聊"
+                android:textColor="#9A9A9A"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/unread_msg_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/unread_msg_count"
+                android:gravity="center"
+                android:text="9"
+                android:textColor="@android:color/white"
+                android:textSize="10sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/re_contacter"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onTabClicked"
+            android:padding="3dp" >
+
+            <ImageView
+                android:id="@+id/iv_contacter"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_centerHorizontal="true"
+                android:background="#ffffff"
+                android:focusable="false"
+                android:scaleType="centerInside"
+                android:src="@drawable/ac_home_tab_contact_list" />
+
+            <TextView
+                android:id="@+id/tv_contacter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_contacter"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="通讯录"
+                android:textColor="#9A9A9A"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/unread_address_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/unread_msg_count"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/re_find"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onTabClicked"
+            android:padding="3dp" >
+
+            <ImageView
+                android:id="@+id/iv_find"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_centerHorizontal="true"
+                android:background="#ffffff"
+                android:focusable="false"
+                android:scaleType="centerInside"
+                android:src="@drawable/ac_home_tab_find" />
+			<TextView
+                android:id="@+id/unread_talk_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/unread_msg_count"
+                android:gravity="center"
+                
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+            <TextView
+                android:id="@+id/tv_find"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/iv_find"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="发现"
+                android:textColor="#9A9A9A"
+                android:textSize="12sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/re_profile"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:onClick="onTabClicked"
+            android:padding="3dp" >
+
+            <ImageView
+                android:id="@+id/ib_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="28dp"
+                android:layout_centerHorizontal="true"
+                android:background="#ffffff"
+                android:focusable="false"
+                android:scaleType="centerInside"
+                android:src="@drawable/ac_home_tab_profile" />
+
+            <TextView
+                android:id="@+id/tv_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ib_profile"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="3dp"
+                android:text="我"
+                android:textColor="#9A9A9A"
+                android:textSize="12sp" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/home_bottoms"
+        android:layout_below="@id/title"
+        android:background="@color/home_background_fragment" />
+
+</RelativeLayout>

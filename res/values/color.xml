@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="common_title_top">#22292c</color>
+	<color name="home_background_fragment">#dcdede</color>
+	
+</resources>
