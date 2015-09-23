@@ -18,7 +18,19 @@ package com.example.lzchat;
  **/
 public interface ConstantValue {
 	/**
-	 * 登录标记
+	 * sp登录标记
 	 */
 	String LOGIN = "login";
+	/**
+	 * sp未读朋友信息
+	 */
+	String UNREADMSGCOUNT = "unreadmsgcount";
+	/**
+	 * sp未加通讯录
+	 */
+	String UNREADADDRESS = "unreadaddress";
+	/**
+	 * sp未读朋友圈
+	 */
+	String UNREADTALKFRIEND = "unreadtalkfriend";
 }

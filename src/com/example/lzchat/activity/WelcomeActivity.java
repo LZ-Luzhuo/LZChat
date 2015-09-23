@@ -1,6 +1,7 @@
 package com.example.lzchat.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -45,12 +46,16 @@ public class WelcomeActivity extends Activity {
 			switch (msg.what) {
 			case SUCCESS:
 				// 3.销毁该活动展示主界面
-				// TODO
+				startActivity(new Intent(WelcomeActivity.this,HomeActivity.class));
 				LogUtils.i("SUCCESS");
 				break;
 			case FAILURE:
 				// 2.2没有登录显示登录/注册按钮
 				// TODO
+				// 以下是临时代码,只是为了显示主界面
+				startActivity(new Intent(WelcomeActivity.this,HomeActivity.class));
+//				startActivity(new Intent(WelcomeActivity.this,
+//						RecommendActivity.class));
 				LogUtils.i("FAILURE");
 				break;
 			default:
@@ -77,11 +82,11 @@ public class WelcomeActivity extends Activity {
 					// 1.睡3秒
 					SystemClock.sleep(3000);
 					// 获取登录标记
-					String login = SharePrefUtil.getString(
+					String LoginTag = SharePrefUtil.getString(
 							WelcomeActivity.this, ConstantValue.LOGIN, null);
-					LogUtils.i("login:" + login);
+					LogUtils.i("login:" + LoginTag);
 					// 2.1是否已经登录,应经登录展示主界面
-					if (login != null && !login.equals("")) {
+					if (LoginTag != null && !LoginTag.equals("")) {
 						Message message = new Message();
 						message.what = SUCCESS;
 						handler.sendMessage(message);
