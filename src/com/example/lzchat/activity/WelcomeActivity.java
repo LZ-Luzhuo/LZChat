@@ -54,8 +54,7 @@ public class WelcomeActivity extends Activity {
 				// TODO
 				// 以下是临时代码,只是为了显示主界面
 				startActivity(new Intent(WelcomeActivity.this,HomeActivity.class));
-//				startActivity(new Intent(WelcomeActivity.this,
-//						RecommendActivity.class));
+//				startActivity(new Intent(WelcomeActivity.this,Login.class));
 				LogUtils.i("FAILURE");
 				break;
 			default:
