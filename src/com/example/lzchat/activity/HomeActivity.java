@@ -65,7 +65,7 @@ import android.widget.Toast;
  * 
  * =================================================
  **/
-public class HomeActivity extends FragmentActivity{
+public class HomeActivity extends FragmentActivity implements OnClickListener{
 	@ViewInject(R.id.unread_msg_count)
 	private TextView unread_msg_count;
 	@ViewInject(R.id.unread_address_count)
@@ -98,6 +98,11 @@ public class HomeActivity extends FragmentActivity{
 	@ViewInject(R.id.tv_profile)
 	private TextView tv_profile;
 	
+	@ViewInject(R.id.iv_add)
+	private ImageView iv_add;
+	@ViewInject(R.id.iv_search)
+	private ImageView iv_search;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +113,9 @@ public class HomeActivity extends FragmentActivity{
 		
 		initView();
 		
+		// title的添加和搜索的单击事件
+		iv_add.setOnClickListener(this);
+		iv_search.setOnClickListener(this);
 	}
 
 	
@@ -155,7 +163,9 @@ public class HomeActivity extends FragmentActivity{
 		.hide(contacterFragment).hide(findFragment).hide(profileFragment).show(chatFragment).commit();
 	}
 	
-	// tab标签的点击事件
+	/**
+	 * tab标签的点击事件
+	 */
 	private int index;
 	private int currentTabIndex;
 	public void onTabClicked(View view) {
@@ -195,7 +205,22 @@ public class HomeActivity extends FragmentActivity{
 		currentTabIndex = index;
 	}
 	
-
-	
+	/**
+	 * title的添加和搜索按钮事件
+	 */
+	@Override
+	public void onClick(View v) {
+		switch (v.getId()) {
+		case R.id.iv_add:
+			AddPopWindow addPopWindow = new AddPopWindow(HomeActivity.this);
+			addPopWindow.show(iv_add);
+			break;
+		case R.id.iv_search:
+			 startActivity(new Intent(HomeActivity.this,SearchFriends.class));
+			break;
+		default:
+			break;
+		}
+	}
 	
 }
