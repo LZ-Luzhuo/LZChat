@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
+import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 
@@ -13,7 +16,9 @@ import com.example.lzchat.ConstantValue;
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
 import com.example.lzchat.utils.SharePrefUtil;
+import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.util.LogUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
  * =================================================
@@ -34,27 +39,46 @@ import com.lidroid.xutils.util.LogUtils;
 public class WelcomeActivity extends Activity {
 	protected static final int SUCCESS = 0;
 	protected static final int FAILURE = 1;
+	
+	@ViewInject(R.id.login_denglu)
 	private Button login_denglu;
+	@ViewInject(R.id.login_zhuce)
 	private Button login_zhuce;
+	
 	Handler handler = new Handler() {
 
 		@Override
 		public void handleMessage(Message msg) {
 			super.handleMessage(msg);
-			super.handleMessage(msg);
-			WelcomeActivity.this.finish();
 			switch (msg.what) {
 			case SUCCESS:
 				// 3.销毁该活动展示主界面
 				startActivity(new Intent(WelcomeActivity.this,HomeActivity.class));
 				LogUtils.i("SUCCESS");
+				WelcomeActivity.this.finish();
 				break;
 			case FAILURE:
 				// 2.2没有登录显示登录/注册按钮
+				login_denglu.setVisibility(View.VISIBLE);
+				login_denglu.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						WelcomeActivity.this.finish();
+						startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
+					}
+				});
+				login_zhuce.setVisibility(View.VISIBLE);
+				login_zhuce.setOnClickListener(new OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						WelcomeActivity.this.finish();
+						startActivity(new Intent(WelcomeActivity.this, RegisterActivity.class));
+					}
+				});
+				
 				// TODO
 				// 以下是临时代码,只是为了显示主界面
-				startActivity(new Intent(WelcomeActivity.this,HomeActivity.class));
-//				startActivity(new Intent(WelcomeActivity.this,Login.class));
+//				startActivity(new Intent(WelcomeActivity.this,HomeActivity.class));
 				LogUtils.i("FAILURE");
 				break;
 			default:
@@ -71,9 +95,9 @@ public class WelcomeActivity extends Activity {
 		LogUtils.allowE = GlobalParams.ShowLogE;
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.ac_welcome);
-		login_denglu = (Button) findViewById(R.id.login_denglu);
-		login_zhuce = (Button) findViewById(R.id.login_zhuce);
-
+		ViewUtils.inject(this);
+		System.out.println();
+		
 		new Thread() {
 			@Override
 			public void run() {
@@ -101,4 +125,5 @@ public class WelcomeActivity extends Activity {
 		}.start();
 
 	}
+
 }

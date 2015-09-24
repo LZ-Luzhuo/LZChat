@@ -28,7 +28,12 @@
         <activity android:name="com.example.lzchat.activity.AddFriendsActivity"/>
         <activity android:name="com.example.lzchat.activity.ScanActivity"/>
         <activity android:name="com.example.lzchat.activity.Feedback"/>
+        <!-- title search -->
+        <activity android:name="com.example.lzchat.activity.SearchFriends"/>
         
+        <!-- welcome unlogin -->
+        <activity android:name="com.example.lzchat.activity.LoginActivity"/>
+        <activity android:name="com.example.lzchat.activity.RegisterActivity"/>
     </application>
 
 </manifest>

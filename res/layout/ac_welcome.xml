@@ -15,28 +15,29 @@
         android:paddingBottom="20dp" >
 
         <Button
-            android:id="@+id/login_zhuce"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_weight="1"
-            android:background="@android:color/holo_blue_dark"
-            android:text="登录"
-            android:textColor="@android:color/white"
-            android:visibility="invisible"
-            tools:ignore="NewApi" />
-
-        <Button
             android:id="@+id/login_denglu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:layout_weight="1"
-            android:background="@android:color/white"
             android:visibility="invisible"
-            android:text="注册" />
+            android:background="@drawable/ac_wel_login"
+            android:text="登录"
+            android:textColor="#ff6189ff"
+            tools:ignore="NewApi" />
+
+        <Button
+            android:id="@+id/login_zhuce"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_weight="1"
+            android:visibility="invisible"
+            android:background="@drawable/ac_wel_register"
+            android:text="注册"
+            android:textColor="#ff6189ff" />
     </LinearLayout>
 
 </RelativeLayout>
