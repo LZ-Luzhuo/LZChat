@@ -24,7 +24,7 @@
             android:visibility="invisible"
             android:background="@drawable/ac_wel_login"
             android:text="登录"
-            android:textColor="#ff6189ff"
+            android:textColor="#ffffffff"
             tools:ignore="NewApi" />
 
         <Button
