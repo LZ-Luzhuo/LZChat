@@ -3,5 +3,9 @@
 
     <color name="common_title_top">#22292c</color>
 	<color name="home_background_fragment">#dcdede</color>
+	<color name="balck_line">#16160e</color>
+	<color name="white_text">#ffffff</color>
+	<color name="black_text">#000000</color>
+	<color name="green_text">#3FB838</color>
 	
 </resources>

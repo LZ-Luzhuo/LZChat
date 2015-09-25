@@ -1,5 +1,7 @@
 package com.example.lzchat.activity;
 
+import com.example.lzchat.R;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
@@ -23,10 +25,7 @@ import android.widget.TextView;
 public class RegisterActivity extends Activity{
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		TextView textview = new TextView(this);
-		textview.setText("RegisterActivity");
-		setContentView(textview);
+		setContentView(R.layout.ac_btn_register);
 	}
 }
