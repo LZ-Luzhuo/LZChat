@@ -16,14 +16,29 @@ package com.example.lzchat;
  * 
  * =================================================
  **/
-public interface GlobalParams {
+public class GlobalParams {
 	/**
 	 * 显示log.i
 	 */
-	boolean ShowLogI = true;
+	public static boolean ShowLogI = true;
 	/**
 	 * 显示log.e
 	 */
-	boolean ShowLogE = true;
+	public static boolean ShowLogE = true;
 	
+	/**
+	 * 代理的ip
+	 */
+	public static String PROXY="";
+	/**
+	 * 代理的端口
+	 */
+	public static int PORT=0;
+	
+	/**
+	 * address
+	 */
+	public static String URL = "http://192.168.0.103:80/LZChatService";
+	
+	public static String LOGIN = "/UserLogin";
 }

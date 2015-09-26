@@ -8,15 +8,25 @@
         android:minSdkVersion="10"
         android:targetSdkVersion="21" />
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <instrumentation
+        android:name="android.test.InstrumentationTestRunner"
+        android:targetPackage="com.example.lzchat" >
+    </instrumentation>
+
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
-        android:theme="@style/AppTheme"
-        android:label="@string/app_name" >
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <uses-library android:name="android.test.runner" />
+
         <activity
             android:name="com.example.lzchat.activity.WelcomeActivity"
-            android:label="@string/app_name"
             android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name"
             android:screenOrientation="portrait" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,19 +34,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.lzchat.activity.HomeActivity"/>
-        
+        <activity android:name="com.example.lzchat.activity.HomeActivity" />
+
         <!-- title add -->
-        <activity android:name="com.example.lzchat.activity.AddGroupActivity"/>
-        <activity android:name="com.example.lzchat.activity.AddFriendsActivity"/>
-        <activity android:name="com.example.lzchat.activity.ScanActivity"/>
-        <activity android:name="com.example.lzchat.activity.Feedback"/>
+        <activity android:name="com.example.lzchat.activity.AddGroupActivity" />
+        <activity android:name="com.example.lzchat.activity.AddFriendsActivity" />
+        <activity android:name="com.example.lzchat.activity.ScanActivity" />
+        <activity android:name="com.example.lzchat.activity.Feedback" />
         <!-- title search -->
-        <activity android:name="com.example.lzchat.activity.SearchFriends"/>
-        
+        <activity android:name="com.example.lzchat.activity.SearchFriends" />
+
         <!-- welcome unlogin -->
-        <activity android:name="com.example.lzchat.activity.LoginActivity"/>
-        <activity android:name="com.example.lzchat.activity.RegisterActivity"/>
+        <activity android:name="com.example.lzchat.activity.LoginActivity" />
+        <activity android:name="com.example.lzchat.activity.RegisterActivity" />
     </application>
 
 </manifest>

@@ -33,4 +33,9 @@ public interface ConstantValue {
 	 * sp未读朋友圈
 	 */
 	String UNREADTALKFRIEND = "unreadtalkfriend";
+	
+	/**
+	 * 字符集
+	 */
+	String ENCONDING="UTF-8";
 }
