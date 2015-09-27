@@ -14,6 +14,7 @@ import com.easemob.chat.EMContactManager;
 import com.easemob.chat.EMGroupManager;
 import com.easemob.chat.GroupChangeListener;
 import com.example.lzchat.ConstantValue;
+import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
 import com.example.lzchat.activity.base.BaseActivity;
 import com.example.lzchat.activity.popwindow.AddPopWindow;
@@ -110,6 +111,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener{
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.ac_home);
 		ViewUtils.inject(this);
+		// finish掉WelcomeActivity
+		if(GlobalParams.ac != null)
+			GlobalParams.ac.finish();
 		
 		initView();
 		

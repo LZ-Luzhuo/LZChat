@@ -20,7 +20,7 @@ import java.util.List;
  **/
 public class UserBean {
 	/**
-	 * 标记
+	 * 标记 //1.注册 2.登录 3...
 	 */
 	public int sign; //1.注册 2.登录 3...
 	/**

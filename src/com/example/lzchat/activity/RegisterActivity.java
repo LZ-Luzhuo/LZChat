@@ -10,6 +10,7 @@ import com.example.lzchat.bean.UserBean;
 import com.example.lzchat.net.HttpClientUtil;
 import com.example.lzchat.net.NetUtil;
 import com.example.lzchat.utils.GsonTools;
+import com.example.lzchat.utils.SharePrefUtil;
 import com.lidroid.xutils.HttpUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.http.RequestParams;
@@ -75,12 +76,10 @@ public class RegisterActivity extends Activity implements OnClickListener{
 			case SUCCESS:
 				Toast.makeText(RegisterActivity.this, "注册成功!", 0).show();
 				UserBean userBeanmsg = (UserBean) msg.obj;
-				Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-				intent.putExtra("username",userBeanmsg.nickname);
-				intent.putExtra("password",userBeanmsg.password);
-				setResult(RESULT_OK, intent);
+				SharePrefUtil.saveString(RegisterActivity.this, "lastphone_num", userBeanmsg.phone_num);
+				SharePrefUtil.saveString(RegisterActivity.this, "lastPassword", userBeanmsg.password);
 				RegisterActivity.this.finish();
-				startActivity(intent);
+				startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
 				break;
 			case FAILURE:
 				Toast.makeText(RegisterActivity.this, "注册失败!", 0).show();

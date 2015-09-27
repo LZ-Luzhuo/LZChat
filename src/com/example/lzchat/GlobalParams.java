@@ -1,5 +1,7 @@
 package com.example.lzchat;
 
+import com.example.lzchat.activity.WelcomeActivity;
+
 /**
  * =================================================
  * 
@@ -34,6 +36,10 @@ public class GlobalParams {
 	 * 代理的端口
 	 */
 	public static int PORT=0;
+	/**
+	 * WelcomeActivity的引用
+	 */
+	public static WelcomeActivity ac;
 	
 	/**
 	 * address

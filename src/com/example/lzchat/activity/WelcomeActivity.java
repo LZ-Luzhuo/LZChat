@@ -63,7 +63,7 @@ public class WelcomeActivity extends Activity {
 				login_denglu.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						WelcomeActivity.this.finish();
+//						WelcomeActivity.this.finish();
 						startActivity(new Intent(WelcomeActivity.this, LoginActivity.class));
 					}
 				});
@@ -71,7 +71,7 @@ public class WelcomeActivity extends Activity {
 				login_zhuce.setOnClickListener(new OnClickListener() {
 					@Override
 					public void onClick(View v) {
-						WelcomeActivity.this.finish();
+//						WelcomeActivity.this.finish();
 						startActivity(new Intent(WelcomeActivity.this, RegisterActivity.class));
 					}
 				});
@@ -91,6 +91,7 @@ public class WelcomeActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		GlobalParams.ac = this;
 		LogUtils.allowI = GlobalParams.ShowLogI;
 		LogUtils.allowE = GlobalParams.ShowLogE;
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
