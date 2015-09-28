@@ -47,6 +47,9 @@
         <!-- welcome unlogin -->
         <activity android:name="com.example.lzchat.activity.LoginActivity" />
         <activity android:name="com.example.lzchat.activity.RegisterActivity" />
+        
+        <!-- profile fragment -->
+        <activity android:name="com.example.lzchat.activity.PersonalActivity"/>
     </application>
 
 </manifest>

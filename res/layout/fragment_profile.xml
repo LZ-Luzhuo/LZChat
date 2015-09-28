@@ -10,7 +10,7 @@
         android:orientation="vertical" >
 
         <LinearLayout
-            android:id="@+id/personal_layout"
+            android:id="@+id/profile_personal_layout"
             android:layout_width="match_parent"
             android:layout_height="70dip"
             android:layout_marginTop="15dip"
@@ -19,7 +19,7 @@
             android:padding="8dip" >
 
             <ImageView
-                android:id="@+id/photo_icon"
+                android:id="@+id/profile_photo"
                 android:layout_width="55dip"
                 android:layout_height="55dip"
                 android:layout_marginLeft="5dip"
@@ -33,7 +33,7 @@
                 android:orientation="vertical" >
 
                 <TextView
-                    android:id="@+id/tv_nickname"
+                    android:id="@+id/profile_nickname"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dip"
@@ -42,7 +42,7 @@
                     android:textSize="16sp" />
 
                 <TextView
-                    android:id="@+id/tv_username"
+                    android:id="@+id/profile_phonenumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dip"
@@ -59,7 +59,7 @@
                 android:gravity="center" >
 
                 <ImageButton
-                    android:id="@+id/QR_myself"
+                    android:id="@+id/profile_qr"
                     android:layout_width="20dip"
                     android:layout_height="20dip"
                     android:background="@drawable/profile_tab_0" />
@@ -67,7 +67,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/photo_layout"
+            android:id="@+id/profile_photo_layout"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             android:layout_marginTop="15dip"
@@ -99,7 +99,7 @@
             android:background="@color/home_background_fragment" />
 
         <LinearLayout
-            android:id="@+id/collect_layout"
+            android:id="@+id/profile_collect_layout"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             android:background="@drawable/profile_tab_bg"
@@ -123,7 +123,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/wallet_layout"
+            android:id="@+id/profile_wallet_layout"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             android:layout_marginTop="15dip"
@@ -155,7 +155,7 @@
             android:background="@color/home_background_fragment" />
 
         <LinearLayout
-            android:id="@+id/card_bag_layout"
+            android:id="@+id/profile_card_layout"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             android:background="@drawable/profile_tab_bg"
@@ -179,7 +179,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/expression_layout"
+            android:id="@+id/profile_expression_layout"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             android:layout_marginTop="15dip"
@@ -204,7 +204,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/setting_layout"
+            android:id="@+id/profile_setting_layout"
             android:layout_width="match_parent"
             android:layout_height="50dip"
             android:layout_marginTop="15dip"
