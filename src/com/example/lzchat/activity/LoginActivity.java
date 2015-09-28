@@ -153,7 +153,6 @@ public class LoginActivity extends Activity implements OnClickListener{
 			
 			@Override
 			public void run() {
-				progressDialog.dismiss();
 				try {
 					InputStream is = httpClientUtil.sendXml(GlobalParams.URL+GlobalParams.LOGIN, json);
 					if(is == null){
@@ -167,6 +166,7 @@ public class LoginActivity extends Activity implements OnClickListener{
 					String json = baos.toString("utf-8");
 					LogUtils.i(json);
 					UserBean regUserBean = GsonTools.jsonToBean(json, UserBean.class);
+					progressDialog.dismiss();
 					// 注册成功
 					if(regUserBean!=null){
 						if(regUserBean.successCode==1){
