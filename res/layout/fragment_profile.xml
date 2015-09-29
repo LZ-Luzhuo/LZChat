@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:scrollbars="none" >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -38,7 +39,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dip"
                     android:text="小闲"
-                    android:textColor="@color/black_text"
+                    android:textColor="@color/text_black"
                     android:textSize="16sp" />
 
                 <TextView
@@ -48,7 +49,7 @@
                     android:layout_marginLeft="12dip"
                     android:layout_marginTop="3dip"
                     android:text="账号:15888888888"
-                    android:textColor="@color/gray_text"
+                    android:textColor="@color/text_gray"
                     android:textSize="14sp" />
             </LinearLayout>
 
@@ -87,7 +88,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dip"
                 android:text="相册"
-                android:textColor="@color/black_text"
+                android:textColor="@color/text_black"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -118,7 +119,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dip"
                 android:text="收藏"
-                android:textColor="@color/black_text"
+                android:textColor="@color/text_black"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -143,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dip"
                 android:text="钱包"
-                android:textColor="@color/black_text"
+                android:textColor="@color/text_black"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -174,7 +175,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dip"
                 android:text="卡包"
-                android:textColor="@color/black_text"
+                android:textColor="@color/text_black"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -199,7 +200,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dip"
                 android:text="表情"
-                android:textColor="@color/black_text"
+                android:textColor="@color/text_black"
                 android:textSize="16sp" />
         </LinearLayout>
 
@@ -224,7 +225,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dip"
                 android:text="设置"
-                android:textColor="@color/black_text"
+                android:textColor="@color/text_black"
                 android:textSize="16sp" />
         </LinearLayout>
 

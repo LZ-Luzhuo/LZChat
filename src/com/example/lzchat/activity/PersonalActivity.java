@@ -1,7 +1,10 @@
 package com.example.lzchat.activity;
 
+import com.example.lzchat.R;
+
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.Window;
 import android.widget.TextView;
 
 /**
@@ -25,8 +28,7 @@ public class PersonalActivity extends Activity{
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		TextView textview = new TextView(this);
-		textview.setText("PersonalActivity");
-		setContentView(textview);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+		setContentView(R.layout.ac_personal_information);
 	}
 }

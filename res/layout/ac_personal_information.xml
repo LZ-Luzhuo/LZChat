@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/personal_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height_top"
+        android:background="@color/common_title_top"
+        android:gravity="center_vertical" >
+
+        <ImageButton
+            android:id="@+id/personal_return"
+            android:layout_width="26dip"
+            android:layout_height="26dip"
+            android:layout_marginLeft="8dip"
+            android:background="@drawable/btn_register_return_selector" />
+
+        <TextView
+            android:id="@+id/personal_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:text="个人信息"
+            android:textColor="@color/text_white"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/home_background_fragment"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/personal_photo_layout"
+                android:layout_width="match_parent"
+                android:layout_height="70dip"
+                android:layout_marginTop="15dip"
+                android:background="@drawable/profile_tab_bg"
+                android:padding="8dip" >
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:text="头像"
+                    android:textColor="@color/text_black"
+                    android:textSize="16sp" />
+
+                <ImageView
+                    android:id="@+id/personal_photo"
+                    android:layout_width="55dip"
+                    android:layout_height="55dip"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dip"
+                    android:background="@drawable/profile_touxiang" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="@color/home_background_fragment" />
+
+            <LinearLayout
+                android:id="@+id/personal_nickname_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dip"
+                android:background="@drawable/profile_tab_bg"
+                android:padding="8dip" >
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:text="昵称"
+                    android:textColor="@color/text_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/personal_nickname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="小闲"
+                    android:textColor="@color/text_gray"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="@color/home_background_fragment" />
+
+            <LinearLayout
+                android:id="@+id/personal_phonenumber_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dip"
+                android:background="@drawable/profile_tab_bg"
+                android:padding="8dip" >
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:text="账号"
+                    android:textColor="@color/text_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/personal_phonenumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="15888888888"
+                    android:textColor="@color/text_gray"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="@color/home_background_fragment" />
+
+            <LinearLayout
+                android:id="@+id/personal_qr"
+                android:layout_width="match_parent"
+                android:layout_height="50dip"
+                android:background="@drawable/profile_tab_bg"
+                android:padding="8dip" >
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:text="二维码名片"
+                    android:textColor="@color/text_black"
+                    android:textSize="16sp" />
+
+                <ImageButton
+                    android:id="@+id/personal_qr_personal"
+                    android:layout_width="20dip"
+                    android:layout_height="20dip"
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/profile_tab_0" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="@color/home_background_fragment" />
+
+            <LinearLayout
+                android:id="@+id/personal_address_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dip"
+                android:background="@drawable/profile_tab_bg"
+                android:padding="8dip" >
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:text="我的地址"
+                    android:textColor="@color/text_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/personal_adderss"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/text_gray"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/personal_sex_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dip"
+                android:layout_marginTop="15dip"
+                android:background="@drawable/profile_tab_bg"
+                android:padding="8dip" >
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:text="性别"
+                    android:textColor="@color/text_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/personal_sex"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="女"
+                    android:textColor="@color/text_gray"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="@color/home_background_fragment" />
+
+            <LinearLayout
+                android:id="@+id/personal_region_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dip"
+                android:background="@drawable/profile_tab_bg"
+                android:padding="8dip" >
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:text="地区"
+                    android:textColor="@color/text_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/personal_region"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:text="浙江 杭州"
+                    android:textColor="@color/text_gray"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dip"
+                android:layout_marginLeft="10dip"
+                android:layout_marginRight="10dip"
+                android:background="@color/home_background_fragment" />
+
+            <LinearLayout
+                android:id="@+id/personal_signature_layout"
+                android:layout_width="match_parent"
+                android:layout_height="50dip"
+                android:background="@drawable/profile_tab_bg"
+                android:padding="8dip" >
+
+                <TextView
+                    android:layout_width="0dip"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dip"
+                    android:layout_weight="1"
+                    android:text="个性签名"
+                    android:textColor="@color/text_black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/personal_signature"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textColor="@color/text_gray"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dip"
+                android:padding="8dip" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

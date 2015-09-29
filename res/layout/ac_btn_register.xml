@@ -25,7 +25,7 @@
             android:layout_marginBottom="5dip"
             android:layout_marginLeft="5dip"
             android:layout_marginTop="5dip"
-            android:background="@color/balck_line" />
+            android:background="@color/line_balck" />
 
         <TextView
             android:id="@+id/title_text"
@@ -33,7 +33,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dip"
             android:text="填写手机号"
-            android:textColor="@color/white_text"
+            android:textColor="@color/text_white"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -53,7 +53,7 @@
             android:layout_centerVertical="true"
             android:gravity="center"
             android:text="昵称"
-            android:textColor="@color/black_text"
+            android:textColor="@color/text_black"
             android:textSize="18sp" />
 
         <EditText
@@ -64,7 +64,7 @@
             android:layout_toRightOf="@id/reg_title_nickname"
             android:gravity="center"
             android:hint="例如:小闲"
-            android:textColor="@color/black_text"
+            android:textColor="@color/text_black"
             android:textSize="18sp" />
 
         <ImageButton
@@ -91,7 +91,7 @@
             android:layout_centerVertical="true"
             android:gravity="center"
             android:text="国家/地区"
-            android:textColor="@color/black_text"
+            android:textColor="@color/text_black"
             android:textSize="18sp" />
 
         <Button
@@ -101,7 +101,7 @@
             android:layout_alignParentRight="true"
             android:background="@android:color/transparent"
             android:text="中国"
-            android:textColor="@color/green_text"
+            android:textColor="@color/text_green"
             android:textSize="18sp" />
     </RelativeLayout>
     
@@ -122,7 +122,7 @@
             android:layout_weight="0.2"
             android:gravity="center"
             android:text="+86"
-            android:textColor="@color/black_text"
+            android:textColor="@color/text_black"
             android:textSize="18sp" />
 
         <EditText
@@ -134,7 +134,7 @@
             android:hint="你的手机号"
             android:maxLength="11"
             android:inputType="phone"
-            android:textColor="@color/black_text"
+            android:textColor="@color/text_black"
             android:textSize="18sp" />
     </LinearLayout>
 
@@ -153,7 +153,7 @@
             android:layout_weight="0.2"
             android:gravity="center"
             android:text="密码"
-            android:textColor="@color/black_text"
+            android:textColor="@color/text_black"
             android:textSize="18sp" />
 
         <EditText
@@ -164,7 +164,7 @@
             android:gravity="center"
             android:hint="填写密码"
             android:password="true"
-            android:textColor="@color/black_text"
+            android:textColor="@color/text_black"
             android:textSize="18sp" />
     </LinearLayout>
 

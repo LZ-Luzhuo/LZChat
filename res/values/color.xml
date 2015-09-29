@@ -3,11 +3,11 @@
 
     <color name="common_title_top">#22292c</color>
 	<color name="home_background_fragment">#dcdede</color>
-	<color name="balck_line">#16160e</color>
-	<color name="white_text">#ffffff</color>
-	<color name="black_text">#000000</color>
-	<color name="green_text">#3FB838</color>
-	<color name="gray_text">#a5a8a8</color>
+	<color name="line_balck">#16160e</color>
+	<color name="text_white">#ffffff</color>
+	<color name="text_black">#000000</color>
+	<color name="text_green">#3FB838</color>
+	<color name="text_gray">#a5a8a8</color>
 	
 	
 </resources>
