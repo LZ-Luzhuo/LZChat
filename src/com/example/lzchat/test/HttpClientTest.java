@@ -1,14 +1,19 @@
 package com.example.lzchat.test;
 
+import java.io.File;
 import java.io.InputStream;
 
+import android.graphics.Bitmap;
+import android.os.Environment;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.bean.UserBean;
 import com.example.lzchat.net.HttpClientUtil;
+import com.example.lzchat.utils.BitmapUtil;
 import com.example.lzchat.utils.GsonTools;
+import com.lidroid.xutils.BitmapUtils;
 
 public class HttpClientTest extends AndroidTestCase{
 
@@ -30,5 +35,18 @@ public class HttpClientTest extends AndroidTestCase{
 		}else{
 			Log.i(TAG, "resource:null");
 		}
+	}
+	
+	public void test1(){
+		Bitmap bitmapFromFile = BitmapUtil.getBitmapFromFile(new File(Environment.getExternalStorageDirectory(), "IMG_20151001_164543.jpg"));
+		long bitmapsize = BitmapUtil.getBitmapsize(bitmapFromFile);
+		BitmapUtil.saveFile(bitmapFromFile, new File(Environment.getExternalStorageDirectory(), "IMG_20151001_1645430.jpg"),60);
+		System.out.println(bitmapsize);
+	}
+	
+	public void test2(){
+		Bitmap bitmapFromFile1 = BitmapUtil.getBitmapFromFile(new File(Environment.getExternalStorageDirectory(), "IMG_20151001_1645430.jpg"));
+		long bitmapsize2 = BitmapUtil.getBitmapsize(bitmapFromFile1);
+		System.out.println(bitmapsize2);
 	}
 }

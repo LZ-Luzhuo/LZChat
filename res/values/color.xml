@@ -8,6 +8,7 @@
 	<color name="text_black">#000000</color>
 	<color name="text_green">#3FB838</color>
 	<color name="text_gray">#a5a8a8</color>
+	<color name="gray_actionsheet">#8F8F8F</color>
 	
 	
 </resources>

@@ -1,6 +1,5 @@
 package com.example.lzchat.bean;
 
-import java.util.List;
 
 /**
  * =================================================
@@ -22,7 +21,7 @@ public class UserBean {
 	/**
 	 * 标记 //1.注册 2.登录 3...
 	 */
-	public int sign; //1.注册 2.登录 3...
+	public int sign; //1.注册 2.登录 3更新数据...
 	/**
 	 * 昵称
 	 */
@@ -37,6 +36,10 @@ public class UserBean {
 	public String password;
 	
 	public int successCode; //1.请求处理成功 2.请求处理失败
+	/**
+	 * 用户头像
+	 */
+	public String photo;
 
 	@Override
 	public String toString() {

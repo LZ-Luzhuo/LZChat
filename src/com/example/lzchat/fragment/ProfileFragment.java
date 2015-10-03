@@ -2,6 +2,8 @@ package com.example.lzchat.fragment;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import com.example.lzchat.R;
 import com.example.lzchat.activity.PersonalActivity;
 import com.example.lzchat.activity.SettingActivity;
+import com.example.lzchat.utils.Base64Coder;
 import com.example.lzchat.utils.SharePrefUtil;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
@@ -76,12 +79,12 @@ public class ProfileFragment extends Fragment implements OnClickListener{
 		profile_phonenumber.setText(SharePrefUtil.getString(getActivity(), "lastphone_num", ""));
 		profile_nickname.setText(SharePrefUtil.getString(getActivity(), "lastnickname", ""));
 		
-		String avatar = SharePrefUtil.getString(getActivity(), "avatar", "");
-		if(avatar != ""){
-			BitmapUtils bitmapUtils = new BitmapUtils(getActivity());
-			bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
-			bitmapUtils.display(profile_photo, avatar);
-		}
+    	String avatar = SharePrefUtil.getString(getActivity(), "avatar", "");
+    	if(avatar != ""){
+    		BitmapUtils bitmapUtils = new BitmapUtils(getActivity());
+    		bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
+    		bitmapUtils.display(profile_photo, avatar);
+    	}
 	}
 
 	@Override
@@ -102,12 +105,12 @@ public class ProfileFragment extends Fragment implements OnClickListener{
 		if(resultCode==Activity.RESULT_OK){
 			switch (requestCode) {
 			case 5:
-				String avatar = SharePrefUtil.getString(getActivity(), "avatar", "");
-				if(avatar != ""){
-					BitmapUtils bitmapUtils = new BitmapUtils(getActivity());
-					bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
-					bitmapUtils.display(profile_photo, avatar);
-				}
+		    	String avatar = SharePrefUtil.getString(getActivity(), "avatar", "");
+		    	if(avatar != ""){
+		    		BitmapUtils bitmapUtils = new BitmapUtils(getActivity());
+		    		bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
+		    		bitmapUtils.display(profile_photo, avatar);
+		    	}
 				break;
 			}
 		}

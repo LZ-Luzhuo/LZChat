@@ -47,4 +47,6 @@ public class GlobalParams {
 	public static String URL = "http://192.168.0.103:80/LZChatService";
 	
 	public static String LOGIN = "/UserLogin";
+	
+	public static String UPDATE = "/Update";
 }
