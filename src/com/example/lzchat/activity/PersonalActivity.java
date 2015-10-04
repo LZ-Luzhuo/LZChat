@@ -66,9 +66,9 @@ public class PersonalActivity extends Activity implements OnClickListener{
 	private ImageView personal_photo;
 	@ViewInject(R.id.personal_nickname)
 	private TextView personal_nickname;
-	@ViewInject(R.id.personal_nickname)
-	private TextView personal_phonenumber; 
 	@ViewInject(R.id.personal_phonenumber)
+	private TextView personal_phonenumber; 
+	@ViewInject(R.id.personal_adderss)
 	private TextView personal_adderss;
 	@ViewInject(R.id.personal_sex)
 	private TextView personal_sex;
@@ -90,30 +90,30 @@ public class PersonalActivity extends Activity implements OnClickListener{
 	}
 
 	private void initView() {
-		String lastphone_num = SharePrefUtil.getString(this, "lastphone_num", "");
+		String lastphone_num = SharePrefUtil.getString(PersonalActivity.this, "lastphone_num", "");
 		if(lastphone_num != "")
 			personal_phonenumber.setText(lastphone_num);
-		String lastnickname = SharePrefUtil.getString(this, "lastnickname", "");
+		String lastnickname = SharePrefUtil.getString(PersonalActivity.this, "lastnickname", "");
 		if(lastnickname != "")
 			personal_nickname.setText(lastnickname);
     	String avatar = SharePrefUtil.getString(PersonalActivity.this, "avatar", "");
     	if(avatar != ""){
-    		BitmapUtils bitmapUtils = new BitmapUtils(this);
+    		BitmapUtils bitmapUtils = new BitmapUtils(PersonalActivity.this);
     		bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
     		bitmapUtils.display(personal_photo, avatar);
     	}
-		String address = SharePrefUtil.getString(this, "address", "");
+		String address = SharePrefUtil.getString(PersonalActivity.this, "address", "");
 		if(address != "")
 			personal_adderss.setText(address);
-		String sex = SharePrefUtil.getString(this, "sex", "");
+		String sex = SharePrefUtil.getString(PersonalActivity.this, "sex", "");
 		if(sex != "")
 			personal_sex.setText(sex);
-		String region = SharePrefUtil.getString(this, "region", "");
+		String region = SharePrefUtil.getString(PersonalActivity.this, "region", "");
 		if(region != "")
 			personal_region.setText(region);
 			
-		personal_photo_layout.setOnClickListener(this);
-		personal_return.setOnClickListener(this);
+		personal_photo_layout.setOnClickListener(PersonalActivity.this);
+		personal_return.setOnClickListener(PersonalActivity.this);
 	}
 
 	@Override

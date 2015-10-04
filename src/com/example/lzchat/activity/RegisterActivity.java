@@ -82,6 +82,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
 	private Button reg_return_btn;
 	private ProgressDialog progressDialog;
 	private File lastPhotoFile;
+	boolean upDate; //是否上传照片
 	
 	Handler handler = new Handler() {
 		@Override
@@ -93,7 +94,9 @@ public class RegisterActivity extends Activity implements OnClickListener{
 				UserBean userBeanmsg = (UserBean) msg.obj;
 				SharePrefUtil.saveString(RegisterActivity.this, "lastphone_num", userBeanmsg.phone_num);
 				SharePrefUtil.saveString(RegisterActivity.this, "lastPassword", userBeanmsg.password);
-				updata();//上传照片
+				
+				if(upDate)
+					updata();//上传照片
 				RegisterActivity.this.finish();
 				startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
 				break;
@@ -307,6 +310,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
         	SharePrefUtil.saveString(RegisterActivity.this, "avatar", f.getPath());
         	String avatar = SharePrefUtil.getString(RegisterActivity.this, "avatar", "");
         	LogUtils.i("avatar:"+avatar);
+        	upDate = true;
         }
     }
     

@@ -1,25 +1,20 @@
 package com.example.lzchat.activity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentTransaction;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.view.Window;
+import android.widget.ImageView;
+import android.widget.TextView;
 
-import com.easemob.EMConnectionListener;
-import com.easemob.chat.EMChat;
-import com.easemob.chat.EMChatManager;
-import com.easemob.chat.EMContactListener;
-import com.easemob.chat.EMContactManager;
-import com.easemob.chat.EMGroupManager;
-import com.easemob.chat.GroupChangeListener;
 import com.example.lzchat.ConstantValue;
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
-import com.example.lzchat.activity.base.BaseActivity;
 import com.example.lzchat.activity.popwindow.AddPopWindow;
-import com.example.lzchat.dao.MessgeDao;
-import com.example.lzchat.dao.UserDao;
 import com.example.lzchat.fragment.ChatFragment;
 import com.example.lzchat.fragment.ContacterFragment;
 import com.example.lzchat.fragment.FindFragment;
@@ -28,26 +23,6 @@ import com.example.lzchat.utils.SharePrefUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
-
-import android.annotation.SuppressLint;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.content.IntentFilter;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentTransaction;
-import android.text.TextUtils;
-import android.util.Log;
-import android.view.KeyEvent;
-import android.view.View;
-import android.view.Window;
-import android.view.View.OnClickListener;
-import android.widget.ImageView;
-import android.widget.TextView;
-import android.widget.Toast;
 
 
 /**
@@ -111,10 +86,11 @@ public class HomeActivity extends FragmentActivity implements OnClickListener{
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.ac_home);
 		ViewUtils.inject(this);
+		GlobalParams.hm = this;
 		// finish掉WelcomeActivity
 		if(GlobalParams.ac != null)
 			GlobalParams.ac.finish();
-		
+		SharePrefUtil.saveString(this, ConstantValue.LOGIN, "123");
 		initView();
 		
 		// title的添加和搜索的单击事件

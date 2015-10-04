@@ -107,10 +107,10 @@ public class WelcomeActivity extends Activity {
 					SystemClock.sleep(3000);
 					// 获取登录标记
 					String LoginTag = SharePrefUtil.getString(
-							WelcomeActivity.this, ConstantValue.LOGIN, null);
+							WelcomeActivity.this, ConstantValue.LOGIN, "");
 					LogUtils.i("login:" + LoginTag);
 					// 2.1是否已经登录,应经登录展示主界面
-					if (LoginTag != null && !LoginTag.equals("")) {
+					if (LoginTag != "") {
 						Message message = new Message();
 						message.what = SUCCESS;
 						handler.sendMessage(message);

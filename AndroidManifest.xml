@@ -51,6 +51,7 @@
         
         <!-- profile fragment -->
         <activity android:name="com.example.lzchat.activity.PersonalActivity"/>
+        <activity android:name="com.example.lzchat.activity.SettingActivity"/>
     </application>
 
 </manifest>

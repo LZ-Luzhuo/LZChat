@@ -1,5 +1,6 @@
 package com.example.lzchat;
 
+import com.example.lzchat.activity.HomeActivity;
 import com.example.lzchat.activity.WelcomeActivity;
 
 /**
@@ -40,6 +41,10 @@ public class GlobalParams {
 	 * WelcomeActivity的引用
 	 */
 	public static WelcomeActivity ac;
+	/**
+	 * HomeActivity的引用
+	 */
+	public static HomeActivity hm;
 	
 	/**
 	 * address
