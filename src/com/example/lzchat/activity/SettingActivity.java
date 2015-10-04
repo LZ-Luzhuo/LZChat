@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 
 import com.example.lzchat.ConstantValue;
@@ -34,6 +35,8 @@ import com.lidroid.xutils.view.annotation.ViewInject;
 public class SettingActivity extends Activity implements OnClickListener{
 	@ViewInject(R.id.setting_exit)
 	private LinearLayout setting_exit;
+	@ViewInject(R.id.personal_return)
+	private ImageButton personal_return;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,7 @@ public class SettingActivity extends Activity implements OnClickListener{
 
 	private void initView() {
 		setting_exit.setOnClickListener(this);
+		personal_return.setOnClickListener(this);
 	}
 
 	@Override
@@ -61,6 +65,10 @@ public class SettingActivity extends Activity implements OnClickListener{
 			if(GlobalParams.hm != null)
 				GlobalParams.hm.finish();
 			startActivity(new Intent(SettingActivity.this, LoginActivity.class));
+			break;
+		case R.id.personal_return:
+			setResult(Activity.RESULT_OK, new Intent());
+			SettingActivity.this.finish();
 			break;
 		}
 	}

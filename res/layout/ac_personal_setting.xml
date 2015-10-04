@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dip"
-            android:text="个人信息"
+            android:text="设置"
             android:textColor="@color/text_white"
             android:textSize="16sp" />
     </LinearLayout>
