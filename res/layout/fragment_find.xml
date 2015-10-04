@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/home_background_fragment"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/find_frindcircles"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/profile_tab_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <ImageView
+                android:layout_width="23dip"
+                android:layout_height="23dip"
+                android:layout_marginLeft="5dip"
+                android:background="@drawable/find_frindcircles" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dip"
+                android:layout_weight="1"
+                android:text="朋友圈"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+
+            <FrameLayout
+                android:layout_width="35dip"
+                android:layout_height="35dip"
+                android:layout_marginRight="5dip"
+                android:visibility="invisible" >
+
+                <ImageView
+                    android:id="@+id/find_frindcircles_update"
+                    android:layout_width="23dip"
+                    android:layout_height="23dip"
+                    android:layout_gravity="center"
+                    android:background="@drawable/ic_launcher" />
+
+                <ImageView
+                    android:id="@+id/find_frindcircles_unreader"
+                    android:layout_width="8dip"
+                    android:layout_height="8dip"
+                    android:layout_gravity="top|right"
+                    android:background="@drawable/unread_msg_count"
+                    android:padding="0.5dip" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/find_scan"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/profile_tab_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <ImageView
+                android:layout_width="23dip"
+                android:layout_height="23dip"
+                android:layout_marginLeft="5dip"
+                android:background="@drawable/find_scan" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dip"
+                android:text="扫一扫"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@color/home_background_fragment" />
+
+        <LinearLayout
+            android:id="@+id/find_shake"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/profile_tab_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <ImageView
+                android:layout_width="23dip"
+                android:layout_height="23dip"
+                android:layout_marginLeft="5dip"
+                android:background="@drawable/find_shake" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dip"
+                android:text="摇一摇"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/find_nearby_people"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/profile_tab_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <ImageView
+                android:layout_width="23dip"
+                android:layout_height="23dip"
+                android:layout_marginLeft="5dip"
+                android:background="@drawable/find_nearbypeople" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dip"
+                android:text="附近的人"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@color/home_background_fragment" />
+
+        <LinearLayout
+            android:id="@+id/find_drift_bottle"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/profile_tab_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <ImageView
+                android:layout_width="23dip"
+                android:layout_height="23dip"
+                android:layout_marginLeft="5dip"
+                android:background="@drawable/find_driftbottle" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dip"
+                android:text="漂流瓶"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/find_shopping"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:layout_marginTop="15dip"
+            android:background="@drawable/profile_tab_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <ImageView
+                android:layout_width="23dip"
+                android:layout_height="23dip"
+                android:layout_marginLeft="5dip"
+                android:background="@drawable/find_shopping" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dip"
+                android:text="购物"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dip"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="10dip"
+            android:background="@color/home_background_fragment" />
+
+        <LinearLayout
+            android:id="@+id/find_game"
+            android:layout_width="match_parent"
+            android:layout_height="50dip"
+            android:background="@drawable/profile_tab_bg"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="8dip" >
+
+            <ImageView
+                android:layout_width="23dip"
+                android:layout_height="23dip"
+                android:layout_marginLeft="5dip"
+                android:background="@drawable/find_game" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dip"
+                android:text="游戏"
+                android:textColor="@color/text_black"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="15dip"
+            android:layout_marginTop="15dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>
