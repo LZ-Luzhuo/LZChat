@@ -52,6 +52,9 @@
         <!-- profile fragment -->
         <activity android:name="com.example.lzchat.activity.PersonalActivity"/>
         <activity android:name="com.example.lzchat.activity.SettingActivity"/>
+        
+        <!-- find fragment -->
+        <activity android:name="com.example.lzchat.activity.FrindcirclesActivity"/>
     </application>
 
 </manifest>

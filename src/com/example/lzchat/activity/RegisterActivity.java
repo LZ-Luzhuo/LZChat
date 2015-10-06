@@ -7,31 +7,10 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.example.lzchat.GlobalParams;
-import com.example.lzchat.R;
-import com.example.lzchat.bean.UserBean;
-import com.example.lzchat.net.HttpClientUtil;
-import com.example.lzchat.net.NetUtil;
-import com.example.lzchat.utils.Base64Coder;
-import com.example.lzchat.utils.BitmapUtil;
-import com.example.lzchat.utils.GsonTools;
-import com.example.lzchat.utils.SharePrefUtil;
-import com.example.lzchat.view.ActionSheetDialog;
-import com.example.lzchat.view.ActionSheetDialog.OnSheetItemClickListener;
-import com.example.lzchat.view.ActionSheetDialog.SheetItemColor;
-import com.lidroid.xutils.BitmapUtils;
-import com.lidroid.xutils.HttpUtils;
-import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.http.RequestParams;
-import com.lidroid.xutils.util.LogUtils;
-import com.lidroid.xutils.view.annotation.ViewInject;
-
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
-import android.graphics.Bitmap.Config;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
@@ -44,8 +23,20 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.lzchat.GlobalParams;
+import com.example.lzchat.R;
+import com.example.lzchat.bean.UserBean;
+import com.example.lzchat.net.HttpClientUtil;
+import com.example.lzchat.net.NetUtil;
+import com.example.lzchat.utils.Base64Coder;
+import com.example.lzchat.utils.BitmapUtil;
+import com.example.lzchat.utils.GsonTools;
+import com.example.lzchat.utils.SharePrefUtil;
+import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.util.LogUtils;
+import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
  * =================================================
@@ -139,30 +130,9 @@ public class RegisterActivity extends Activity implements OnClickListener{
 			break;
 		case R.id.reg_camera_portrait:
 			LogUtils.i("reg_camera_portrait");
-			new ActionSheetDialog(RegisterActivity.this)
-			.setTitle("请选择上传方式")
-			.addSheetItem("拍照", SheetItemColor.Red,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-							// 调用系统照相机
-							Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-							// 指定调用相机拍照后照片的储存路径
-							intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(getPhotoFile()));
-							startActivityForResult(intent, 11);
-						}
-					})
-					.addSheetItem("相册", SheetItemColor.Red, new OnSheetItemClickListener() {
-						
-						@Override
-						public void onClick(int which) {
-	                      Intent intent = new Intent(Intent.ACTION_PICK, null);
-	                      intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
-	                      startActivityForResult(intent, 22);
-	                      
-						}
-					})
-					.show();
+			Intent intent = new Intent(Intent.ACTION_PICK, null);
+            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
+            startActivityForResult(intent, 22);
 		}
 	}
 
@@ -253,10 +223,6 @@ public class RegisterActivity extends Activity implements OnClickListener{
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
-        case 11:
-            startPhotoZoom(Uri.fromFile(lastPhotoFile), 150);
-            break;
-
         case 22:
             if (data != null)
                 startPhotoZoom(data.getData(), 150);

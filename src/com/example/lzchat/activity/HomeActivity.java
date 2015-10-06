@@ -47,7 +47,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener{
 	@ViewInject(R.id.unread_address_count)
 	private TextView unread_address_count;
 	@ViewInject(R.id.unread_talk_count)
-	private TextView unread_talk_count;
+	public TextView unread_talk_count;
 	
 	private Fragment[] tabFragments;
 	private ChatFragment chatFragment;

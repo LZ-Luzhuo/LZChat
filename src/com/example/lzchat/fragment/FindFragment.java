@@ -1,5 +1,6 @@
 package com.example.lzchat.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +12,12 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.example.lzchat.R;
+import com.example.lzchat.activity.FrindcirclesActivity;
+import com.example.lzchat.activity.HomeActivity;
+import com.example.lzchat.activity.NearbyPeopleActivity;
+import com.example.lzchat.activity.ScanActivity;
+import com.example.lzchat.activity.ShakeActivity;
+import com.example.lzchat.utils.SharePrefUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -48,8 +55,9 @@ public class FindFragment extends Fragment implements OnClickListener{
 	public View onCreateView(LayoutInflater inflater,
 			@Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 		View inflate = inflater.inflate(R.layout.fragment_find, null);
-		initView();
 		ViewUtils.inject(this,inflate);
+		initView();
+		System.out.println();
 		return inflate;
 	}
 
@@ -65,22 +73,26 @@ public class FindFragment extends Fragment implements OnClickListener{
 		switch (v.getId()) {
 		//朋友圈
 		case R.id.find_frindcircles:
-			
+			//打开朋友圈并隐藏未读信息红点
+			SharePrefUtil.saveString(getActivity(), "frindcircles", "");
+			startActivity(new Intent(getActivity(), FrindcirclesActivity.class));
+			((HomeActivity)getActivity()).unread_talk_count.setVisibility(View.GONE);
+			find_frindcircles_unreader.setVisibility(View.GONE);
 			break;
 
 		//扫一扫
 		case R.id.find_scan:
-			
+			startActivity(new Intent(getActivity(), ScanActivity.class));
 			break;
 		
 		//摇一摇
 		case R.id.find_shake:
-			
+			startActivity(new Intent(getActivity(), ShakeActivity.class));
 			break;
 			
 		//附近的人
 		case R.id.find_nearby_people:
-			
+			startActivity(new Intent(getActivity(), NearbyPeopleActivity.class));
 			break;
 		}
 		

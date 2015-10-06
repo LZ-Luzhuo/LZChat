@@ -2,8 +2,6 @@ package com.example.lzchat.activity;
 
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -11,12 +9,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
-import android.os.Message;
 import android.provider.MediaStore;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -25,7 +20,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
@@ -35,9 +29,6 @@ import com.example.lzchat.utils.Base64Coder;
 import com.example.lzchat.utils.BitmapUtil;
 import com.example.lzchat.utils.GsonTools;
 import com.example.lzchat.utils.SharePrefUtil;
-import com.example.lzchat.view.ActionSheetDialog;
-import com.example.lzchat.view.ActionSheetDialog.OnSheetItemClickListener;
-import com.example.lzchat.view.ActionSheetDialog.SheetItemColor;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.util.LogUtils;
@@ -120,30 +111,9 @@ public class PersonalActivity extends Activity implements OnClickListener{
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.personal_photo_layout:
-			new ActionSheetDialog(PersonalActivity.this)
-			.setTitle("请选择上传方式")
-			.addSheetItem("拍照", SheetItemColor.Red,
-					new OnSheetItemClickListener() {
-						@Override
-						public void onClick(int which) {
-							// 调用系统照相机
-							Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-							// 指定调用相机拍照后照片的储存路径
-							intent.putExtra(MediaStore.EXTRA_OUTPUT,Uri.fromFile(getPhotoFile()));
-							startActivityForResult(intent, 11);
-						}
-					})
-					.addSheetItem("相册", SheetItemColor.Red, new OnSheetItemClickListener() {
-						
-						@Override
-						public void onClick(int which) {
-	                      Intent intent = new Intent(Intent.ACTION_PICK, null);
-	                      intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
-	                      startActivityForResult(intent, 22);
-	                      
-						}
-					})
-					.show();
+			Intent intent = new Intent(Intent.ACTION_PICK, null);
+            intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,"image/*");
+            startActivityForResult(intent, 22);
 			break;
 		case R.id.personal_return:
 			setResult(Activity.RESULT_OK, new Intent());
@@ -165,10 +135,6 @@ public class PersonalActivity extends Activity implements OnClickListener{
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		switch (requestCode) {
-        case 11:
-            startPhotoZoom(Uri.fromFile(lastPhotoFile), 150);
-            break;
-
         case 22:
             if (data != null)
                 startPhotoZoom(data.getData(), 150);
