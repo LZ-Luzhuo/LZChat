@@ -1,0 +1,50 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/personal_top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height_top"
+        android:background="@color/common_title_top"
+        android:gravity="center_vertical" >
+
+        <ImageButton
+            android:id="@+id/personal_return"
+            android:layout_width="26dip"
+            android:layout_height="26dip"
+            android:layout_marginLeft="8dip"
+            android:background="@drawable/btn_register_return_selector" />
+
+        <TextView
+            android:id="@+id/personal_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_weight="1"
+            android:textColor="@color/text_white"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/personal_send"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/reg_password_layout"
+            android:background="@drawable/btn_register_bg"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:text="发送"
+            android:textColor="@android:color/white"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/message"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:gravity="top"
+        android:hint="这一刻的想法..." />
+
+</LinearLayout>

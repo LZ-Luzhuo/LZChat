@@ -54,4 +54,6 @@ public class GlobalParams {
 	public static String LOGIN = "/UserLogin";
 	
 	public static String UPDATE = "/Update";
+	
+	public static String MESSAGE = "/Message";
 }

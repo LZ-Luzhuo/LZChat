@@ -1,6 +1,7 @@
 package com.example.lzchat.activity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -53,7 +54,6 @@ public class FrindcirclesActivity extends Activity implements OnClickListener {
 	}
 
 	private void initView() {
-
 		personal_return.setOnClickListener(this);
 		personal_publish.setOnClickListener(this);
 	}
@@ -63,6 +63,7 @@ public class FrindcirclesActivity extends Activity implements OnClickListener {
 		switch (v.getId()) {
 		// 直接打开发表心情的界面
 		case R.id.personal_publish:
+			startActivity(new Intent(FrindcirclesActivity.this,PublishActivity.class));
 			break;
 		case R.id.personal_return:
 			FrindcirclesActivity.this.finish();

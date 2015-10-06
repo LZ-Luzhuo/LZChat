@@ -55,6 +55,7 @@
         
         <!-- find fragment -->
         <activity android:name="com.example.lzchat.activity.FrindcirclesActivity"/>
+        <activity android:name="com.example.lzchat.activity.PublishActivity"/>
     </application>
 
 </manifest>
