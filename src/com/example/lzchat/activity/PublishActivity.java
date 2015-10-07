@@ -107,6 +107,5 @@ public class PublishActivity extends Activity implements OnClickListener{
 				PublishActivity.this.finish();
 			}
 		}.start();
-		Toast.makeText(PublishActivity.this, "发表成功!", 0).show();
 	}
 }
