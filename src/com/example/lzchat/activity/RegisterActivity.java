@@ -23,6 +23,7 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.lzchat.GlobalParams;
@@ -60,7 +61,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
 	@ViewInject(R.id.reg_register_btn)
 	private Button reg_register_btn;
 	@ViewInject(R.id.reg_camera_portrait)
-	private ImageButton reg_camera_portrait;
+	private ImageView reg_camera_portrait;
 	@ViewInject(R.id.reg_nickname)
 	private EditText reg_nickname;
 	@ViewInject(R.id.reg_phone_code)
@@ -275,6 +276,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
         	// 显示图片
         	SharePrefUtil.saveString(RegisterActivity.this, "avatar", f.getPath());
         	String avatar = SharePrefUtil.getString(RegisterActivity.this, "avatar", "");
+        	reg_camera_portrait.setImageURI(Uri.fromFile(f));
         	LogUtils.i("avatar:"+avatar);
         	upDate = true;
         }
