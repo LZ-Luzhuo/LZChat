@@ -1,0 +1,64 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="match_parent" >
+
+    <com.example.lzchat.view.XListView
+        android:id="@+id/mListView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="@dimen/title_height_top"
+        android:divider="@null" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+
+        <RelativeLayout
+            android:id="@+id/rl_circlefriends_top"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/title_height_top"
+            android:background="@color/common_title_top"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:id="@+id/personal_return"
+                android:layout_width="26dip"
+                android:layout_height="26dip"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:background="@drawable/btn_register_return_selector" />
+
+            <TextView
+                android:id="@+id/tv_circlefriends_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/personal_return"
+                android:text="朋友圈"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <ImageButton
+                android:id="@+id/personal_publish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/circlefriends_photo_image"
+                android:gravity="center_vertical" />
+        </RelativeLayout>
+
+        <ProgressBar
+            android:id="@+id/pb_head"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/rl_circlefriends_top"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="30dp"
+            android:indeterminateDrawable="@drawable/iamge_progress"
+            android:visibility="gone" />
+    </RelativeLayout>
+
+</FrameLayout>

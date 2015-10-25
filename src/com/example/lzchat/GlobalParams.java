@@ -49,7 +49,7 @@ public class GlobalParams {
 	/**
 	 * address
 	 */
-	public static String URL = "http://192.168.0.103:80/LZChatService";
+	public static String URL = "http://192.168.0.100:80/LZChatService";
 	
 	public static String LOGIN = "/UserLogin";
 	
