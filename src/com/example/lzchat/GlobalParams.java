@@ -56,4 +56,26 @@ public class GlobalParams {
 	public static String UPDATE = "/Update";
 	
 	public static String MESSAGE = "/Message";
+	
+	
+	// 当前用户
+	public static String sender = "111";
+	// 用户标志
+	public static String token = "111";
+	//接收信息的用户
+	public static String receiver = "B";
+	/**
+	 * 当前用户头像信息
+	 */
+	public static String ico = "http://123";
+	/**
+	 * 当前用户昵称
+	 */
+	public static String nickname = "nicheng";
+	// TCP连接主机地址
+	public final static String dstName = "192.168.0.100";
+	// TCP连接端口
+	public final static int dstPort = 10086;
+	
+	public static String SEARCHFRIEND = "/Searchfriend";
 }
