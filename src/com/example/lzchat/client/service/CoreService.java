@@ -113,6 +113,11 @@ public class CoreService extends Service implements ConnectorListener {
 				invitation.name = jsonToBean.name;
 				invitation.owner = jsonToBean.account;
 				dao.addInvitation(invitation);
+				
+				// 通知数据更新
+				Intent intent = new Intent();
+				intent.setAction(PushReceiver.INVITATION);
+				sendBroadcast(intent);
 			}else{
 				// 通过邀请
 				FriendDao dao = new FriendDao(getApplicationContext());
@@ -124,6 +129,11 @@ public class CoreService extends Service implements ConnectorListener {
 				friend.owner = (jsonToBean.account);
 				friend.sort = (0);
 				dao.addFriend(friend);
+				
+				// 通知数据更新
+				Intent intent = new Intent();
+				intent.setAction(PushReceiver.INVITATION);
+				sendBroadcast(intent);
 			}
 		}
 

@@ -27,6 +27,7 @@ import com.example.lzchat.client.receiver.PushReceiver;
 import com.example.lzchat.dao.DB;
 import com.example.lzchat.dao.FriendDao;
 import com.example.lzchat.dao.InvitationDao;
+import com.lidroid.xutils.util.LogUtils;
 
 /**
  * =================================================
@@ -59,15 +60,13 @@ OnItemClickListener {
 
 		@Override
 		public void onReceive(Context context, Intent intent) {
-//			// intent.getStringExtra(PushReceiver.KEY_FROM);
-//			String to = intent.getStringExtra(PushReceiver.KEY_TO);
-//			// intent.getStringExtra(PushReceiver.KEY_TEXT_CONTENT);
-//
-//			Account account = ((ChatApplication) getActivity().getApplication())
-//					.getCurrentAccount();
-//			if (account.getAccount().equalsIgnoreCase(to)) {
-//				loadData();
-//			}
+			
+			String action = intent.getAction();
+			LogUtils.i("receive");
+			if (PushReceiver.INVITATION.equals(action)) {
+				System.out.println("MainActivity_PushReceiver");
+				loadData();
+			}
 		}
 	};
 	
@@ -106,10 +105,7 @@ OnItemClickListener {
 		
 		
 		IntentFilter filter = new IntentFilter();
-//		filter.addAction(PushReceiver.ACTION_REINVATION);
-//		filter.addAction(PushReceiver.ACTION_INVATION);
-//		filter.addAction(PushReceiver.ACTION_ICON_CHANGE);
-//		filter.addAction(PushReceiver.ACTION_NAME_CHANGE);
+		filter.addAction(PushReceiver.INVITATION);
 		registerReceiver(pushReceiver, filter);
 		
 		
