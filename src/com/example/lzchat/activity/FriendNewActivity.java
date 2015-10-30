@@ -119,6 +119,9 @@ public class FriendNewActivity extends Activity implements OnClickListener{
 		// TODO 发送到服务器  通过未实现
 		// 网络调用
 		LogUtils.i("TCP----------网络调用");
+		invitation.icon = GlobalParams.ico;
+		invitation.name = GlobalParams.nickname;
+		
 		String beanToJson = GsonTools.beanToJson(invitation);
 
 		GlobalParams.receiver = invitation.account;

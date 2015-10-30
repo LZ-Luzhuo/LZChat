@@ -62,7 +62,7 @@
         <activity android:name="com.example.lzchat.activity.MessageActivity" android:screenOrientation="portrait"/>
         
         <!-- Contact -->
-        <activity android:name="com.example.lzchat.ContactFragment" android:screenOrientation="portrait"/>
+        <!-- activity android:name="com.example.lzchat.ContactFragment" android:screenOrientation="portrait"/ -->
         <activity android:name="com.example.lzchat.activity.FriendNewActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.example.lzchat.activity.FriendAddActivity" android:screenOrientation="portrait"/>
         <activity android:name="com.example.lzchat.activity.FriendDetailActivity" android:screenOrientation="portrait"/>
