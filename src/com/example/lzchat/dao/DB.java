@@ -1,7 +1,7 @@
 package com.example.lzchat.dao;
 
 public interface DB {
-	String NAME = "hm.db";
+	String NAME = "lzchat.db";
 	int VERSION = 1;
 
 	public interface Account {
