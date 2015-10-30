@@ -15,6 +15,7 @@ import com.example.lzchat.ConstantValue;
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
 import com.example.lzchat.activity.popwindow.AddPopWindow;
+import com.example.lzchat.client.service.CoreService;
 import com.example.lzchat.fragment.ChatFragment;
 import com.example.lzchat.fragment.ContacterFragment;
 import com.example.lzchat.fragment.FindFragment;
@@ -96,6 +97,21 @@ public class HomeActivity extends FragmentActivity implements OnClickListener{
 		// title的添加和搜索的单击事件
 		iv_add.setOnClickListener(this);
 		iv_search.setOnClickListener(this);
+		
+		// 设置全局用户变量
+		String lastnickname = SharePrefUtil.getString(this, "lastnickname", "");
+		if(!lastnickname.equals(""))
+			GlobalParams.nickname = lastnickname;
+		String lastphone_num = SharePrefUtil.getString(this, "lastphone_num", "");
+		if(!lastnickname.equals("")){
+			GlobalParams.sender = lastphone_num;
+			GlobalParams.token = lastphone_num;
+		}
+		String avatar = SharePrefUtil.getString(this, "avatar", "");
+		if(!lastnickname.equals(""))
+			GlobalParams.ico = avatar;
+		
+		startService(new Intent(this, CoreService.class));
 	}
 
 	
@@ -201,6 +217,13 @@ public class HomeActivity extends FragmentActivity implements OnClickListener{
 		default:
 			break;
 		}
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		// 关闭服务
+		stopService(new Intent(this, CoreService.class));
 	}
 	
 }
