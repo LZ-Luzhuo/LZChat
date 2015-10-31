@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,6 +32,7 @@ import com.example.lzchat.client.receiver.PushReceiver;
 import com.example.lzchat.dao.DB;
 import com.example.lzchat.dao.FriendDao;
 import com.example.lzchat.dao.InvitationDao;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.util.LogUtils;
 
 public class ContacterFragment extends Fragment implements OnClickListener,
@@ -211,10 +213,13 @@ OnItemClickListener {
 			System.out.println("icon : " + icon);
 			ivIcon.setImageResource(R.drawable.default_icon_user);
 			if (!TextUtils.isEmpty(icon)) {
-				Bitmap bitmap = BitmapFactory.decodeFile(icon);
-				if (bitmap != null) {
-					ivIcon.setImageBitmap(bitmap);
-				}
+//				Bitmap bitmap = BitmapFactory.decodeFile(icon);
+//				if (bitmap != null) {
+//					ivIcon.setImageBitmap(bitmap);
+//				}
+				BitmapUtils bitmapUtils = new BitmapUtils(getActivity());
+				bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
+				bitmapUtils.display(ivIcon, icon);
 			}
 
 			view.setTag(friend);

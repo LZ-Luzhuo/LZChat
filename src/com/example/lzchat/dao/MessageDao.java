@@ -92,6 +92,7 @@ public class MessageDao {
 			conversation.owner = (message.owner);
 			conversation.unread = (message.read ? 0 : 1);
 			conversation.updateTime = (System.currentTimeMillis());
+			conversation.icon = message.url; //TODO 
 
 			values = new ContentValues();
 			values.put(DB.Conversation.COLUMN_ACCOUNT,

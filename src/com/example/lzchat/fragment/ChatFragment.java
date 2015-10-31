@@ -4,25 +4,31 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.graphics.Bitmap.Config;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.CursorAdapter;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
 import com.example.lzchat.activity.MessageActivity;
+import com.example.lzchat.bean.Friend;
 import com.example.lzchat.client.receiver.PushReceiver;
 import com.example.lzchat.client.service.CoreService;
 import com.example.lzchat.dao.DB;
+import com.example.lzchat.dao.FriendDao;
 import com.example.lzchat.dao.MessageDao;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.util.LogUtils;
 
 public class ChatFragment extends Fragment implements OnItemClickListener{
@@ -103,18 +109,29 @@ public class ChatFragment extends Fragment implements OnItemClickListener{
 
 		@Override
 		public void bindView(View view, Context context, Cursor cursor) {
+			ImageView ivIcon = (ImageView) view.findViewById(R.id.item_converation_icon);
 			// 未读信息数
 			TextView tvUnread = (TextView) view.findViewById(R.id.item_converation_tv_unread);
 			// 接收或发送朋友的姓名
 			TextView tvName = (TextView) view.findViewById(R.id.item_converation_name);
 			// 内容简要
 			TextView tvContent = (TextView) view.findViewById(R.id.item_converation_content);
-			// 获取数据库_姓名
-			String name = cursor.getString(cursor.getColumnIndex(DB.Conversation.COLUMN_ACCOUNT));
 			// 获取数据库_内容
 			String content = cursor.getString(cursor.getColumnIndex(DB.Conversation.COLUMN_CONTENT));
 			// 获取未读数
 			int unread = cursor.getInt(cursor.getColumnIndex(DB.Conversation.COLUMN_UNREAD));
+			
+			
+			// 获取数据库_姓名(根据phone查找nickname),friend数据库
+			String name = cursor.getString(cursor.getColumnIndex(DB.Conversation.COLUMN_ACCOUNT));
+			FriendDao friendDao = new FriendDao(getActivity());
+			Friend friend = friendDao.queryFriendByAccount(GlobalParams.sender, name);
+			tvName.setText(friend.name);
+			if(friend.icon!=null){
+				BitmapUtils bitmapUtils = new BitmapUtils(getActivity());
+				bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
+				bitmapUtils.display(ivIcon, friend.icon);
+			}
 
 			if (unread <= 0) {
 				tvUnread.setVisibility(View.GONE);
@@ -129,6 +146,12 @@ public class ChatFragment extends Fragment implements OnItemClickListener{
 			}
 			tvName.setText(name);
 			tvContent.setText(content);
+			
+//			if (!TextUtils.isEmpty(icon)) {
+//				BitmapUtils bitmapUtils = new BitmapUtils(getActivity());
+//				bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
+//				bitmapUtils.display(ivIcon, icon);
+//			}
 
 			view.setTag(name);
 		}

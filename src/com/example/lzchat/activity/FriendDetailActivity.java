@@ -2,6 +2,8 @@ package com.example.lzchat.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Bitmap.Config;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,6 +19,7 @@ import com.example.lzchat.client.ConnectorManager;
 import com.example.lzchat.client.request.Request;
 import com.example.lzchat.client.request.TextRequest;
 import com.example.lzchat.utils.GsonTools;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.util.LogUtils;
 
 /**
@@ -89,6 +92,11 @@ public class FriendDetailActivity extends Activity implements OnClickListener{
 			mBtnSend.setVisibility(View.GONE);
 
 			mTvNameView.setText(friend.name);
+			if(friend.icon != null){
+				BitmapUtils bitmapUtils = new BitmapUtils(this);
+				bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
+				bitmapUtils.display(mIvIconView, friend.icon);
+			}
 		} else if (enterFlag == ENTER_CONTACT) {
 			mTvAccountView.setVisibility(View.VISIBLE);
 			mTvNickNameView.setVisibility(View.VISIBLE);
@@ -99,6 +107,11 @@ public class FriendDetailActivity extends Activity implements OnClickListener{
 			mTvNameView.setText(friend.name);
 			mTvAccountView.setText("黑信号:" + friend.account);
 			mTvNickNameView.setText("昵称:" + friend.nickName);
+			if(friend.icon != null){
+				BitmapUtils bitmapUtils = new BitmapUtils(this);
+				bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
+				bitmapUtils.display(mIvIconView, friend.icon);
+			}
 		}
 		
 		mBtnAdd.setOnClickListener(this);

@@ -2,12 +2,16 @@ package com.example.lzchat.activity;
 
 
 
+import java.io.File;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.database.Cursor;
+import android.graphics.Bitmap.Config;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
@@ -36,6 +40,8 @@ import com.example.lzchat.dao.DB;
 import com.example.lzchat.dao.MessageDao;
 import com.example.lzchat.utils.CommonUtil;
 import com.example.lzchat.utils.GsonTools;
+import com.example.lzchat.utils.SharePrefUtil;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.util.LogUtils;
 
 public class MessageActivity extends Activity implements OnClickListener, TextWatcher{
@@ -180,6 +186,7 @@ public class MessageActivity extends Activity implements OnClickListener, TextWa
 
 		// 网络调用
 		LogUtils.i("TCP----------网络调用");
+		msg.url = GlobalParams.ico;
 		String beanToJson = GsonTools.beanToJson(msg);
 
 		Request request = new TextRequest(GlobalParams.sender, GlobalParams.token, GlobalParams.receiver, beanToJson);
@@ -227,6 +234,11 @@ public class MessageActivity extends Activity implements OnClickListener, TextWa
 				senderContentView.setText(cursor.getString(cursor.getColumnIndex(DB.Message.COLUMN_CONTENT)));
 
 				int state = cursor.getInt(cursor.getColumnIndex(DB.Message.COLUMN_STATE));
+				
+				String avatar = SharePrefUtil.getString(MessageActivity.this, "avatar", "");
+				if(!avatar.equals("")){
+					senderIconView.setImageURI(Uri.fromFile(new File(avatar)));
+				}
 
 				// 1.正在发送 2.已经成功发送 3.发送失败
 				if (state == 1) {
@@ -249,6 +261,12 @@ public class MessageActivity extends Activity implements OnClickListener, TextWa
 				TextView receiverContentView = (TextView) view.findViewById(R.id.item_message_receiver_tv_content);
 
 				receiverContentView.setText(cursor.getString(cursor.getColumnIndex(DB.Message.COLUMN_CONTENT)));
+				String icon = cursor.getString(cursor.getColumnIndex(DB.Message.COLUMN_URL));
+				if (!TextUtils.isEmpty(icon)) {
+					BitmapUtils bitmapUtils = new BitmapUtils(MessageActivity.this);
+					bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
+					bitmapUtils.display(receiverIconView, icon);
+				}
 			}
 		}
 	}

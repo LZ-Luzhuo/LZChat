@@ -93,7 +93,7 @@ public class CoreService extends Service implements ConnectorListener {
 				message.read = false;
 				message.state = 1;
 				message.type = 0;
-				message.url = "";
+				message.url = jsonToBean.url;
 				dao.addMessage(message);
 				
 				// 通知数据更新

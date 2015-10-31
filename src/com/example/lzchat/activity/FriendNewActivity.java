@@ -3,7 +3,9 @@ package com.example.lzchat.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
+import android.graphics.Bitmap.Config;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -25,6 +27,7 @@ import com.example.lzchat.dao.FriendDao;
 import com.example.lzchat.dao.InvitationDao;
 import com.example.lzchat.utils.CommonUtil;
 import com.example.lzchat.utils.GsonTools;
+import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.util.LogUtils;
 
 /**
@@ -175,6 +178,12 @@ public class FriendNewActivity extends Activity implements OnClickListener{
 			}
 
 			tvName.setText(name);
+			
+			if (!TextUtils.isEmpty(icon)) {
+				BitmapUtils bitmapUtils = new BitmapUtils(FriendNewActivity.this);
+				bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
+				bitmapUtils.display(ivIcon, icon);
+			}
 
 			btnAccept.setOnClickListener(acceptListener);
 			btnAccept.setTag(invitation);
