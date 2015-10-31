@@ -14,6 +14,13 @@ import com.example.lzchat.net.HttpClientUtil;
 import com.example.lzchat.utils.BitmapUtil;
 import com.example.lzchat.utils.GsonTools;
 import com.lidroid.xutils.BitmapUtils;
+import com.lidroid.xutils.HttpUtils;
+import com.lidroid.xutils.exception.HttpException;
+import com.lidroid.xutils.http.RequestParams;
+import com.lidroid.xutils.http.ResponseInfo;
+import com.lidroid.xutils.http.callback.RequestCallBack;
+import com.lidroid.xutils.http.client.HttpRequest.HttpMethod;
+import com.lidroid.xutils.util.LogUtils;
 
 public class HttpClientTest extends AndroidTestCase{
 
@@ -48,5 +55,38 @@ public class HttpClientTest extends AndroidTestCase{
 		Bitmap bitmapFromFile1 = BitmapUtil.getBitmapFromFile(new File(Environment.getExternalStorageDirectory(), "IMG_20151001_1645430.jpg"));
 		long bitmapsize2 = BitmapUtil.getBitmapsize(bitmapFromFile1);
 		System.out.println(bitmapsize2);
+	}
+	
+	public void upload(){
+		RequestParams params = new RequestParams();
+		params.addHeader("phone_num", "15888888888");
+		params.addHeader("password", "123456");
+		params.addHeader("filename", "beijing.jpg");
+
+		// 加入文件参数后默认使用MultipartEntity（"multipart/form-data"），
+		// 如需"multipart/related"，xUtils中提供的MultipartEntity支持设置subType为"related"。
+		// 使用params.setBodyEntity(httpEntity)可设置更多类型的HttpEntity（如：
+		// MultipartEntity,BodyParamsEntity,FileUploadEntity,InputStreamUploadEntity,StringEntity）。
+		// 例如发送json参数：params.setBodyEntity(new StringEntity(jsonStr,charset));
+		params.addBodyParameter("file", new File(Environment.getExternalStorageDirectory(), "beijing.jpg"));
+
+		HttpUtils http = new HttpUtils();
+		http.send(HttpMethod.POST,
+		    GlobalParams.URL+"/Upload",
+		    params,
+		    new RequestCallBack<String>() {
+
+		        @Override
+		        public void onSuccess(ResponseInfo<String> responseInfo) {
+//		            testTextView.setText("reply: " + responseInfo.result);
+		        	LogUtils.i("上传文件成功");
+		        }
+
+		        @Override
+		        public void onFailure(HttpException error, String msg) {
+//		            testTextView.setText(error.getExceptionCode() + ":" + msg);
+		        	LogUtils.i("上传文件失败");
+		        }
+		});
 	}
 }

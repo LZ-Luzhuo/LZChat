@@ -107,9 +107,9 @@ public class HomeActivity extends FragmentActivity implements OnClickListener{
 			GlobalParams.sender = lastphone_num;
 			GlobalParams.token = lastphone_num;
 		}
-		String avatar = SharePrefUtil.getString(this, "avatar", "");
+		String icon = SharePrefUtil.getString(this, "icon", "");
 		if(!lastnickname.equals(""))
-			GlobalParams.ico = avatar;
+			GlobalParams.ico = icon;
 		
 		startService(new Intent(this, CoreService.class));
 	}

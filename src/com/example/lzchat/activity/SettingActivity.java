@@ -61,6 +61,7 @@ public class SettingActivity extends Activity implements OnClickListener{
 			SharePrefUtil.saveString(this, ConstantValue.LOGIN, "");
 			SharePrefUtil.saveString(this, "lastPassword", "");
 			SharePrefUtil.saveString(this, "avatar", "");
+			SharePrefUtil.saveString(this, "icon", "");
 			SettingActivity.this.finish();
 			if(GlobalParams.hm != null)
 				GlobalParams.hm.finish();

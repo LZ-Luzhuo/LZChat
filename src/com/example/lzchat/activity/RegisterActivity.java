@@ -89,6 +89,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
 				
 				if(upDate)
 					updata();//上传照片
+				SharePrefUtil.saveString(RegisterActivity.this, "icon", "http://192.168.0.100/LZChatService/usericon/"+userBeanmsg.phone_num+userBeanmsg.password+".jpg");
 				RegisterActivity.this.finish();
 				startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
 				break;
@@ -271,7 +272,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
         	BitmapUtil.saveFile(photo, f,60);
         	//删除旧图片
         	String oldavatar = SharePrefUtil.getString(RegisterActivity.this, "avatar", "");
-        	if(oldavatar!="")
+        	if(!oldavatar.equals(""))
         		new File(oldavatar).delete();
         	// 显示图片
         	SharePrefUtil.saveString(RegisterActivity.this, "avatar", f.getPath());
@@ -286,10 +287,10 @@ public class RegisterActivity extends Activity implements OnClickListener{
     	// 上传图片到服务器
     	UserBean userBean = new UserBean();
     	String lastphone_num = SharePrefUtil.getString(this, "lastphone_num", "");
-    	if(lastphone_num!="")
+    	if(!lastphone_num.equals(""))
     		userBean.phone_num = lastphone_num;
     	String lastPassword = SharePrefUtil.getString(this, "lastPassword", "");
-    	if(lastphone_num!="")
+    	if(!lastPassword.equals(""))
     		userBean.password = lastPassword;
     	userBean.sign = 3;
     	
