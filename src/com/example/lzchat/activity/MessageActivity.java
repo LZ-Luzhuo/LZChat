@@ -18,6 +18,7 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -31,12 +32,14 @@ import android.widget.Toast;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
+import com.example.lzchat.bean.Friend;
 import com.example.lzchat.bean.Message;
 import com.example.lzchat.client.ConnectorManager;
 import com.example.lzchat.client.receiver.PushReceiver;
 import com.example.lzchat.client.request.Request;
 import com.example.lzchat.client.request.TextRequest;
 import com.example.lzchat.dao.DB;
+import com.example.lzchat.dao.FriendDao;
 import com.example.lzchat.dao.MessageDao;
 import com.example.lzchat.utils.CommonUtil;
 import com.example.lzchat.utils.GsonTools;
@@ -51,6 +54,8 @@ public class MessageActivity extends Activity implements OnClickListener, TextWa
 
 	private Button btnSend;
 	private EditText etContent;
+	private ImageView iv_back;
+	private TextView nickname;
 	
 	/**
 	 * 接收CoreService发送过来的广播
@@ -72,6 +77,7 @@ public class MessageActivity extends Activity implements OnClickListener, TextWa
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.act_message);
 		messager = getIntent().getStringExtra("messager");
 		
@@ -87,16 +93,25 @@ public class MessageActivity extends Activity implements OnClickListener, TextWa
 
 	private void initView() {
 		listView = (ListView) findViewById(R.id.message_list_view);
-
+		
+		iv_back = (ImageView) findViewById(R.id.iv_back);
 		btnSend = (Button) findViewById(R.id.message_btn_send);
 		etContent = (EditText) findViewById(R.id.message_et_content);
 		btnSend.setEnabled(false);
-
+		nickname = (TextView) findViewById(R.id.nickname);
+		if(!TextUtils.isEmpty(messager)){
+			FriendDao friendDao = new FriendDao(this);
+			Friend friend = friendDao.queryFriendByAccount(GlobalParams.sender, messager);
+			nickname.setText(friend.name);
+		}
+		
 		adapter = new MessageAdapter(this, null);
 		listView.setAdapter(adapter);
 		
 		btnSend.setOnClickListener(this);
 		etContent.addTextChangedListener(this);
+		iv_back.setOnClickListener(this);
+		
 	}
 	
 	private void loadData() {
@@ -136,7 +151,7 @@ public class MessageActivity extends Activity implements OnClickListener, TextWa
 	@Override
 	public void onClick(View v) {
 		// TODO 返回
-		if (false) {
+		if (v == iv_back) {
 			finish();
 		} else if (v == btnSend) {
 			clickSend();
