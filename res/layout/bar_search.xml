@@ -50,7 +50,7 @@
 
     <Button
         android:id="@+id/bar_btn_clear_search"
-        android:layout_width="20dp"
+        android:layout_width="17dp"
         android:layout_height="20dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
