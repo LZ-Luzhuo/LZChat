@@ -12,6 +12,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.lzchat.R;
+import com.example.lzchat.bean.FriendMessage;
 
 public class CommentListViewAdapter extends BaseAdapter {
 
@@ -21,16 +22,19 @@ public class CommentListViewAdapter extends BaseAdapter {
 	private String text;
 	private int number;
 	private String str;
+	private FriendMessage message;
 
-	public CommentListViewAdapter(Context context) {
+	public CommentListViewAdapter(Context context,FriendMessage message) {
 		this.context = context;
+		this.message = message;
 		inflater = LayoutInflater.from(context);
 	}
 
 	@Override
 	public int getCount() {
-
-		return 3;
+		if(message.comment==null)
+			return 0;
+		return message.comment.length;
 	}
 
 	@Override
@@ -65,7 +69,9 @@ public class CommentListViewAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
-		text = "Mcdull:����ǵͷ��ճ����д�����ʶ�Ŷ���̿�����ڷ���ʮ���V��M�ڴ�v�����ӵľ������ɽ��Ʒ����ڿ�SD��������ȿ־巳����";
+		
+		text = message.comment[arg0];
+//		text = "Mcdull:����ǵͷ��ճ����д�����ʶ�Ŷ���̿�����ڷ���ʮ���V��M�ڴ�v�����ӵľ������ɽ��Ʒ����ڿ�SD��������ȿ־巳����";
 		for (int i = 0; i < text.length(); i++) {
 			char ch = text.charAt(i);
 			str = String.valueOf(ch);

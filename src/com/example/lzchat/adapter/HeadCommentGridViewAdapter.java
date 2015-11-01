@@ -1,5 +1,7 @@
 package com.example.lzchat.adapter;
 
+import java.util.List;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,14 +10,17 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.example.lzchat.R;
+import com.example.lzchat.bean.FriendMessage;
 
 public class HeadCommentGridViewAdapter extends BaseAdapter {
 
 	private LayoutInflater inflater;
 	private Context context;
+	private List<FriendMessage> frindlist;
 
-	public HeadCommentGridViewAdapter(Context context) {
+	public HeadCommentGridViewAdapter(Context context,List<FriendMessage> frindlist) {
 		this.context = context;
+		this.frindlist = frindlist;
 		inflater = LayoutInflater.from(context);
 	}
 

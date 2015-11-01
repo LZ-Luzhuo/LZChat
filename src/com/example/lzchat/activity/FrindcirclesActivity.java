@@ -1,12 +1,19 @@
 package com.example.lzchat.activity;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.List;
+
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,14 +25,25 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
 import com.example.lzchat.adapter.MainListViewAdapter;
+import com.example.lzchat.bean.FriendMessage;
+import com.example.lzchat.bean.MessageBean;
+import com.example.lzchat.bean.UserBean;
+import com.example.lzchat.net.HttpClientUtil;
+import com.example.lzchat.net.NetUtil;
+import com.example.lzchat.utils.GsonTools;
 import com.example.lzchat.utils.SharePrefUtil;
 import com.example.lzchat.view.XListView;
 import com.example.lzchat.view.XListView.IXListViewListener;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
 /**
@@ -45,6 +63,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * =================================================
  **/
 public class FrindcirclesActivity extends Activity implements IXListViewListener, OnClickListener {
+	protected static final int SUCCESS = 0;
 	@ViewInject(R.id.personal_return)
 	private ImageView personal_return;
 	@ViewInject(R.id.personal_publish)
@@ -62,6 +81,26 @@ public class FrindcirclesActivity extends Activity implements IXListViewListener
 	private TextView nickname;
 	
 	private Handler mHandler;
+	private ProgressDialog progressDialog;
+	private String beanToJson;
+	
+	private List<FriendMessage> frindlist;
+	
+	Handler handler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			super.handleMessage(msg);
+			switch (msg.what) {
+			case SUCCESS:
+				MessageBean messageBean = (MessageBean) msg.obj;
+				SharePrefUtil.saveString(FrindcirclesActivity.this, "frindcache", messageBean.message);
+				Gson gson = new Gson();
+				frindlist = gson.fromJson(messageBean.message, new TypeToken<List<FriendMessage>>() {}.getType());
+				initView2();
+				break;
+			}
+		}
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,6 +110,65 @@ public class FrindcirclesActivity extends Activity implements IXListViewListener
 		ViewUtils.inject(this);
 		initView();
 		
+		// TODO 如果有缓存先把缓存用上,在去请求网络
+		String frindcache = SharePrefUtil.getString(this, "frindcache", "");
+		if(!frindcache.equals("")){
+			Gson gson = new Gson();
+			frindlist = gson.fromJson(frindcache, new TypeToken<List<FriendMessage>>() {}.getType());
+			initView2();
+		}
+		uploadData();
+	}
+
+	/**
+	 * 从网络获取数据
+	 */
+	private void uploadData() {
+		if(!NetUtil.checkNet(this)){
+			Toast.makeText(this, "请检查网络!", 0).show();
+			return;
+		}
+		
+		MessageBean message = new MessageBean();
+		message.password = SharePrefUtil.getString(this, "lastPassword", "");
+		message.phone_num = SharePrefUtil.getString(this, "lastphone_num", "");
+		message.sign = 2;
+		
+		beanToJson = GsonTools.beanToJson(message);
+		
+		new Thread(){
+			@Override
+			public void run() {
+				super.run();
+				try{
+					HttpClientUtil clientUtil = new HttpClientUtil();
+					InputStream is = clientUtil.sendXml(GlobalParams.URL+GlobalParams.MESSAGE, beanToJson);
+					if(is == null){
+						return;
+					}
+					ByteArrayOutputStream baos = new ByteArrayOutputStream();
+					int i = -1;
+					while ((i = is.read()) != -1) {
+						baos.write(i);
+					}
+					String json = baos.toString("utf-8");
+					LogUtils.i(json);
+					MessageBean regUserBean = GsonTools.jsonToBean(json, MessageBean.class);
+					if(regUserBean!=null){
+						if(regUserBean.successCode==1){
+							Message message = new Message();
+							message.what = SUCCESS;
+							message.obj = regUserBean;
+							handler.sendMessage(message);
+						}else{
+						}
+					}
+				} catch (IOException e) {
+					LogUtils.e("register http request error!");
+					e.printStackTrace();
+				}
+			}
+		}.start();
 	}
 
 	private void initView() {
@@ -94,7 +192,13 @@ public class FrindcirclesActivity extends Activity implements IXListViewListener
 		
 		mReplaceBackground.setOnClickListener(this);
 		mListView.addHeaderView(addHeaderView);
-		mListView.setAdapter(new MainListViewAdapter(this));
+	}
+	
+	/**
+	 * 从网络获取到数据在进行初始化
+	 */
+	private void initView2(){
+		mListView.setAdapter(new MainListViewAdapter(this,frindlist));
 		mListView.setXListViewListener(this);
 	}
 

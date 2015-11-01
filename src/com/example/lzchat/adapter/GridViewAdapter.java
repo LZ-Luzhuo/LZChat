@@ -1,6 +1,9 @@
 package com.example.lzchat.adapter;
 
+import java.util.List;
+
 import android.content.Context;
+import android.graphics.Bitmap.Config;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,25 +11,30 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 
 import com.example.lzchat.R;
+import com.example.lzchat.bean.FriendMessage;
+import com.lidroid.xutils.BitmapUtils;
 
 public class GridViewAdapter extends BaseAdapter {
 
 	private LayoutInflater inflater;
 	private Context context;
-	private int arg;
+	FriendMessage message;
 
-	public GridViewAdapter(Context context, int arg) {
-		this.arg = arg;
+	public GridViewAdapter(Context context, FriendMessage message) {
+		this.message = message;
 		this.context = context;
 		inflater = LayoutInflater.from(context);
 	}
 
 	@Override
 	public int getCount() {
-		if (arg > 9) {
+		if(message.messageImage==null){
+			return 0;
+		}
+		if (message.messageImage.length > 9) {
 			return 9;
 		} else {
-			return arg;
+			return message.messageImage.length;
 		}
 	}
 
@@ -59,6 +67,11 @@ public class GridViewAdapter extends BaseAdapter {
 		} else {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
+		
+		BitmapUtils bitmapUtils = new BitmapUtils(context);
+		bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
+		bitmapUtils.display(viewHolder.mImageView, message.messageImage[arg0]);
+		
 		return convertView;
 	}
 
