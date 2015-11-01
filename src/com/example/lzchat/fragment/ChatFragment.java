@@ -144,7 +144,7 @@ public class ChatFragment extends Fragment implements OnItemClickListener{
 				}
 				tvUnread.setVisibility(View.VISIBLE);
 			}
-			tvName.setText(name);
+//			tvName.setText(name);
 			tvContent.setText(content);
 			
 //			if (!TextUtils.isEmpty(icon)) {
