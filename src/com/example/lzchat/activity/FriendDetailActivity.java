@@ -6,10 +6,12 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
@@ -59,9 +61,12 @@ public class FriendDetailActivity extends Activity implements OnClickListener{
 	private Button mBtnAdd;
 	private Button mBtnSend;
 	
+	private ImageView iv_back;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.act_friend_detail);
 		
 		enterFlag = getIntent().getIntExtra(KEY_ENTER, -1);
@@ -83,6 +88,8 @@ public class FriendDetailActivity extends Activity implements OnClickListener{
 
 		mBtnAdd = (Button) findViewById(R.id.friend_detail_btn_add);
 		mBtnSend = (Button) findViewById(R.id.friend_detail_btn_send);
+		
+		iv_back = (ImageView) findViewById(R.id.iv_back);
 		
 		if (enterFlag == ENTER_SEARCH) {
 			mTvAccountView.setVisibility(View.GONE);
@@ -116,12 +123,13 @@ public class FriendDetailActivity extends Activity implements OnClickListener{
 		
 		mBtnAdd.setOnClickListener(this);
 		mBtnSend.setOnClickListener(this);
+		iv_back.setOnClickListener(this);
 	}
 	
 	@Override
 	public void onClick(View v) {
 		// TODO 返回
-		if (false) {
+		if (v == iv_back) {
 			finish();
 		} else if (v == mBtnAdd) {
 			clickAdd();
@@ -156,5 +164,7 @@ public class FriendDetailActivity extends Activity implements OnClickListener{
 
 		Request request = new TextRequest(GlobalParams.sender, GlobalParams.token, GlobalParams.receiver, beanToJson);
 		ConnectorManager.getInstance().putRequest(request);
+		
+		Toast.makeText(this, "成功发送邀请!!!", 0).show();
 	}
 }

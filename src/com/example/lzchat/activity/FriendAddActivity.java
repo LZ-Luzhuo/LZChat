@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.EditText;
+import android.widget.ImageView;
 
 import com.example.lzchat.R;
 
@@ -28,11 +30,12 @@ import com.example.lzchat.R;
 public class FriendAddActivity extends Activity implements OnClickListener{
 	private EditText mSearchView;
 	private View mScanView;
+	private ImageView iv_back;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.act_friend_add);
 		initView();
 	}
@@ -40,12 +43,15 @@ public class FriendAddActivity extends Activity implements OnClickListener{
 	private void initView() {
 		mSearchView = (EditText) findViewById(R.id.friend_add_et_search);
 		mSearchView.setOnClickListener(this);
+		
+		iv_back = (ImageView) findViewById(R.id.iv_back);
+		iv_back.setOnClickListener(this);
 	}
 	
 	@Override
 	public void onClick(View v) {
 		// TOOD　返回
-		if (false) {
+		if (v == iv_back) {
 			finish();
 		} else if (v == mSearchView) {
 			startActivity(new Intent(this, SearchContactActivity.class));

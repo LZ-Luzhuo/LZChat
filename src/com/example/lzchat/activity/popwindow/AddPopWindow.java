@@ -15,6 +15,7 @@ import com.example.lzchat.R;
 import com.example.lzchat.activity.AddFriendsActivity;
 import com.example.lzchat.activity.AddGroupActivity;
 import com.example.lzchat.activity.Feedback;
+import com.example.lzchat.activity.FriendAddActivity;
 import com.example.lzchat.activity.ScanActivity;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -95,7 +96,7 @@ public class AddPopWindow extends PopupWindow implements OnClickListener{
 			break;
 			
 		case R.id.add_friend:
-			context.startActivity(new Intent(context,AddFriendsActivity.class));  
+			context.startActivity(new Intent(context,FriendAddActivity.class));  
             AddPopWindow.this.dismiss();
 			break;
 			

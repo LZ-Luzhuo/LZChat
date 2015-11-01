@@ -37,9 +37,6 @@ import com.lidroid.xutils.util.LogUtils;
 
 public class ContacterFragment extends Fragment implements OnClickListener,
 OnItemClickListener {
-	private ImageView ivAddFriend;
-	private TextView tvTitle;
-
 	private ListView listView;
 	private ContactAdapter adapter;
 
@@ -69,10 +66,7 @@ OnItemClickListener {
 	}
 	
 	private void initView(View view) {
-		ivAddFriend = (ImageView) view.findViewById(R.id.bar_add_friend);
-		tvTitle = (TextView) view.findViewById(R.id.bar_title);
 		listView = (ListView) view.findViewById(R.id.contact_list_view);
-		tvTitle.setText("通讯录");
 
 		View headerView = View.inflate(getActivity(),
 				R.layout.layout_contact_top, null);
@@ -85,8 +79,6 @@ OnItemClickListener {
 		adapter = new ContactAdapter(getActivity(), null);
 		listView.setAdapter(adapter);
 		
-		
-		ivAddFriend.setOnClickListener(this);
 		newFriendView.setOnClickListener(this);
 
 		listView.setOnItemClickListener(this);
@@ -132,9 +124,7 @@ OnItemClickListener {
 	
 	@Override
 	public void onClick(View v) {
-		if (v == ivAddFriend) {
-			clickAddFriend();
-		} else if (v == newFriendView) {
+		if (v == newFriendView) {
 			clickNewFriend();
 		}
 	}
@@ -146,14 +136,6 @@ OnItemClickListener {
 		startActivity(new Intent(getActivity(), FriendNewActivity.class));
 	}
 
-	private void clickAddFriend() {
-		if (this == null) {
-			return;
-		}
-		startActivity(new Intent(getActivity(), FriendAddActivity.class));
-	}
-	
-	
 	private class ContactAdapter extends CursorAdapter {
 
 		public ContactAdapter(Context context, Cursor c) {

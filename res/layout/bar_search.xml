@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="48dp"
-    android:background="@drawable/bg_top_bar" >
+    android:layout_height="@dimen/title_height_top"
+    android:background="@color/common_title_top" >
 
     <ImageView
         android:id="@+id/bar_btn_back"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:scaleType="center"
-        android:src="@drawable/btn_back_selector" />
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:paddingBottom="5dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="5dp"
+        android:scaleType="centerInside"
+        android:src="@drawable/btn_register_return_selector" />
+
+    <View
+        android:id="@+id/vv"
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_toRightOf="@id/bar_btn_back"
+        android:background="#14191A" />
+    
+    <ImageView 
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@id/vv"
+        android:layout_marginLeft="15dp"
+        android:background="@drawable/icon_search1"/>
 
     <EditText
         android:id="@+id/bar_et_search"
@@ -18,6 +41,7 @@
         android:layout_marginBottom="5dp"
         android:layout_marginLeft="48dp"
         android:layout_marginRight="10dp"
+        android:paddingLeft="40dp"
         android:background="@drawable/edit_selector"
         android:singleLine="true"
         android:textColor="#FFFFFFFF"

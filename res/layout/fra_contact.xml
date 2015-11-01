@@ -5,8 +5,6 @@
     android:background="@color/bg_gray"
     android:orientation="vertical" >
 
-    <include layout="@layout/bar_contact" />
-
     <ListView
         android:id="@+id/contact_list_view"
         android:layout_width="match_parent"
