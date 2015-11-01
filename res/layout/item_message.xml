@@ -60,9 +60,10 @@
                 android:id="@+id/item_message_sender_tv_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/message_right_green_bg"
+                android:background="@drawable/chatto_bg_focused"
                 android:text="hello"
-                android:textColor="@color/white" />
+                android:textSize="20sp"
+                android:textColor="@color/text_black" />
         </LinearLayout>
     </RelativeLayout>
 
@@ -85,14 +86,15 @@
             android:layout_marginLeft="45dp"
             android:layout_marginRight="45dp"
             android:layout_marginTop="5dp"
-            android:background="@drawable/message_left_white_bg" >
+            android:background="@drawable/chatfrom_bg_normal" >
 
             <TextView
                 android:id="@+id/item_message_receiver_tv_content"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="hello"
-                android:textColor="@color/text_dark" />
+                android:textSize="20sp"
+                android:textColor="@color/text_black" />
         </RelativeLayout>
     </RelativeLayout>
 

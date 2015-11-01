@@ -16,6 +16,7 @@ import com.example.lzchat.client.request.AuthRequest;
 import com.example.lzchat.dao.FriendDao;
 import com.example.lzchat.dao.InvitationDao;
 import com.example.lzchat.dao.MessageDao;
+import com.example.lzchat.utils.Base64Coder;
 import com.example.lzchat.utils.CommonUtil;
 import com.example.lzchat.utils.GsonTools;
 import com.lidroid.xutils.util.LogUtils;
@@ -70,6 +71,8 @@ public class CoreService extends Service implements ConnectorListener {
 	public void pushData(String data) {
 		// 获得Connector从服务器获得的信息
 		LogUtils.i("coreService_data : " + data);
+		data = Base64Coder.decodeString(data);
+		
 		
 		// 将Json转成bean
 		GlobalBean jsonToBean = GsonTools.jsonToBean(data, GlobalBean.class);

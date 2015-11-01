@@ -6,11 +6,13 @@ import java.io.InputStream;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.test.AndroidTestCase;
+import android.util.Base64;
 import android.util.Log;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.bean.UserBean;
 import com.example.lzchat.net.HttpClientUtil;
+import com.example.lzchat.utils.Base64Coder;
 import com.example.lzchat.utils.BitmapUtil;
 import com.example.lzchat.utils.GsonTools;
 import com.lidroid.xutils.BitmapUtils;
@@ -88,5 +90,13 @@ public class HttpClientTest extends AndroidTestCase{
 		        	LogUtils.i("上传文件失败");
 		        }
 		});
+	}
+	
+	public void Stringtocode(){
+		String str = "sadf我是中文..";
+		String encode = new String (Base64Coder.encode(str.getBytes()));
+		System.out.println("编码:"+encode);
+		String destr = Base64Coder.decodeString(encode);
+		System.out.println("解码:"+destr);
 	}
 }

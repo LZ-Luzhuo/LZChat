@@ -204,7 +204,7 @@ public class MessageActivity extends Activity implements OnClickListener, TextWa
 		msg.url = GlobalParams.ico;
 		String beanToJson = GsonTools.beanToJson(msg);
 
-		Request request = new TextRequest(GlobalParams.sender, GlobalParams.token, GlobalParams.receiver, beanToJson);
+		Request request = new TextRequest(GlobalParams.sender, GlobalParams.token, messager, beanToJson);
 		ConnectorManager.getInstance().putRequest(request);
 		
 		Toast.makeText(getApplicationContext(), "发送成功", 0).show();
