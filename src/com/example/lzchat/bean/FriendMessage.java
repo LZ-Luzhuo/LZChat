@@ -1,7 +1,13 @@
 package com.example.lzchat.bean;
 
+import java.io.Serializable;
 
-public class FriendMessage {
+
+public class FriendMessage implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4479807954317533154L;
 	public String address;
 	public String[] comment;
 	public String[] good;

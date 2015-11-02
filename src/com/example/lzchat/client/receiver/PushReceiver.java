@@ -33,4 +33,6 @@ public abstract class PushReceiver extends BroadcastReceiver {
 	public static final String MESSAGE = "message";
 	
 	public static final String INVITATION = "Invitation";
+	
+	public static final String FRINDCIRCLES = "Frindcircles";
 }

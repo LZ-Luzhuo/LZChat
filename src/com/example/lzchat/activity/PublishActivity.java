@@ -3,6 +3,7 @@ package com.example.lzchat.activity;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -14,6 +15,9 @@ import android.widget.Toast;
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
 import com.example.lzchat.bean.MessageBean;
+import com.example.lzchat.client.ConnectorManager;
+import com.example.lzchat.client.request.Request;
+import com.example.lzchat.client.request.TextRequest;
 import com.example.lzchat.net.HttpClientUtil;
 import com.example.lzchat.net.NetUtil;
 import com.example.lzchat.utils.GsonTools;
@@ -85,15 +89,26 @@ public class PublishActivity extends Activity implements OnClickListener{
 			Toast.makeText(this, "请检查网络!", 0);
 		MessageBean messageBean = new MessageBean();
 		String mes = message.getText().toString();
-		if(mes != null && mes != "")
+		if(!TextUtils.isEmpty(mes)){
 			messageBean.message = mes;
+		}else{
+			Toast.makeText(this, "内容不能为空!", 0).show();
+			return;
+		}
 		String lastphone_num = SharePrefUtil.getString(this, "lastphone_num", "");
-		if(lastphone_num != "")
+		if(!lastphone_num.equals(""))
 			messageBean.phone_num = lastphone_num;
 		String lastPassword = SharePrefUtil.getString(this, "lastPassword", "");
-		if(lastPassword != "")
+		if(!lastPassword.equals(""))
 			messageBean.password = lastPassword;
+		String lastnickname = SharePrefUtil.getString(this, "lastnickname", "");
+		if(!lastnickname.equals(""))
+			messageBean.nickname = lastnickname;
 		messageBean.sign = 1;
+		
+		messageBean.address = "杭州";
+		messageBean.photo = "123";
+		messageBean.time = "刚刚";
 		
 		final String mess = GsonTools.beanToJson(messageBean);
 		
@@ -104,8 +119,12 @@ public class PublishActivity extends Activity implements OnClickListener{
 				HttpClientUtil clientUtil = new HttpClientUtil();
 				clientUtil.sendXml(GlobalParams.URL+GlobalParams.MESSAGE, mess);
 				progressDialog.dismiss();
+				
+				Request request = new TextRequest(GlobalParams.sender, GlobalParams.token, "ALL", mess);
+				ConnectorManager.getInstance().putRequest(request);
 				PublishActivity.this.finish();
 			}
 		}.start();
+
 	}
 }

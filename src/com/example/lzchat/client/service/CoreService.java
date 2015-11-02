@@ -6,9 +6,11 @@ import android.os.IBinder;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.bean.Friend;
+import com.example.lzchat.bean.FriendMessage;
 import com.example.lzchat.bean.GlobalBean;
 import com.example.lzchat.bean.Invitation;
 import com.example.lzchat.bean.Message;
+import com.example.lzchat.bean.MessageBean;
 import com.example.lzchat.client.ConnectorManager;
 import com.example.lzchat.client.ConnectorManager.ConnectorListener;
 import com.example.lzchat.client.receiver.PushReceiver;
@@ -82,6 +84,19 @@ public class CoreService extends Service implements ConnectorListener {
 		if(jsonToBean.state == 1){ // 接收信息
 			if(jsonToBean.CircleFriends == true){
 				// 是朋友圈信息
+				MessageBean messageBean = new MessageBean();
+				messageBean.address = jsonToBean.address;
+				messageBean.comment = jsonToBean.comment;
+				messageBean.good = jsonToBean.good;
+				messageBean.message = jsonToBean.message;
+				messageBean.messageImage = jsonToBean.messageImage;
+				messageBean.nickname = jsonToBean.nickname;
+				messageBean.password = jsonToBean.password;
+				messageBean.phone_num = jsonToBean.phone_num;
+				messageBean.photo = jsonToBean.sign;
+				messageBean.successCode = jsonToBean.successCode;
+				messageBean.time = jsonToBean.time;
+				System.out.println();
 				
 			}else{
 				// 添加到数据库
@@ -105,38 +120,60 @@ public class CoreService extends Service implements ConnectorListener {
 				sendBroadcast(intent);
 			}
 		}else{ //邀请没有state属性
-			// 邀请
-			if(jsonToBean.agree==false){
-				InvitationDao dao = new InvitationDao(getApplicationContext());
-				Invitation invitation = new Invitation();
-				invitation.account = jsonToBean.owner;
-				invitation.agree = false;
-				invitation.content = "请求添加好友!";
-				invitation.icon = jsonToBean.icon;
-				invitation.name = jsonToBean.name;
-				invitation.owner = jsonToBean.account;
-				dao.addInvitation(invitation);
+			if(jsonToBean.CircleFriends == true){
+				// 是朋友圈信息
+				FriendMessage messageBean = new FriendMessage();
+				messageBean.address = jsonToBean.address;
+				messageBean.comment = jsonToBean.comment;
+				messageBean.good = jsonToBean.good;
+				messageBean.message = jsonToBean.message;
+				messageBean.messageImage = jsonToBean.messageImage;
+				messageBean.nickname = jsonToBean.nickname;
+				messageBean.phone_num = jsonToBean.phone_num;
+				messageBean.photo = jsonToBean.photo;
+				messageBean.successCode = jsonToBean.successCode;
+				messageBean.time = jsonToBean.time;
 				
 				// 通知数据更新
 				Intent intent = new Intent();
-				intent.setAction(PushReceiver.INVITATION);
+				intent.setAction(PushReceiver.FRINDCIRCLES);
+				intent.putExtra("frindcircles", messageBean);
 				sendBroadcast(intent);
+				
 			}else{
-				// 通过邀请
-				FriendDao dao = new FriendDao(getApplicationContext());
-				Friend friend = new Friend();
-				friend.account = (jsonToBean.owner);
-				friend.alpha = (CommonUtil.getFirstAlpha(jsonToBean.name));
-				friend.icon = (jsonToBean.icon);
-				friend.name = (jsonToBean.name);
-				friend.owner = (jsonToBean.account);
-				friend.sort = (0);
-				dao.addFriend(friend);
-				
-				// 通知数据更新
-				Intent intent = new Intent();
-				intent.setAction(PushReceiver.INVITATION);
-				sendBroadcast(intent);
+				// 邀请
+				if(jsonToBean.agree==false){
+					InvitationDao dao = new InvitationDao(getApplicationContext());
+					Invitation invitation = new Invitation();
+					invitation.account = jsonToBean.owner;
+					invitation.agree = false;
+					invitation.content = "请求添加好友!";
+					invitation.icon = jsonToBean.icon;
+					invitation.name = jsonToBean.name;
+					invitation.owner = jsonToBean.account;
+					dao.addInvitation(invitation);
+					
+					// 通知数据更新
+					Intent intent = new Intent();
+					intent.setAction(PushReceiver.INVITATION);
+					sendBroadcast(intent);
+				}else{
+					// 通过邀请
+					FriendDao dao = new FriendDao(getApplicationContext());
+					Friend friend = new Friend();
+					friend.account = (jsonToBean.owner);
+					friend.alpha = (CommonUtil.getFirstAlpha(jsonToBean.name));
+					friend.icon = (jsonToBean.icon);
+					friend.name = (jsonToBean.name);
+					friend.owner = (jsonToBean.account);
+					friend.sort = (0);
+					dao.addFriend(friend);
+					
+					// 通知数据更新
+					Intent intent = new Intent();
+					intent.setAction(PushReceiver.INVITATION);
+					sendBroadcast(intent);
+				}
 			}
 		}
 

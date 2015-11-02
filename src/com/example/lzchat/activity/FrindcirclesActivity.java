@@ -3,12 +3,14 @@ package com.example.lzchat.activity;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.Serializable;
 import java.util.List;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
@@ -33,6 +35,7 @@ import com.example.lzchat.adapter.MainListViewAdapter;
 import com.example.lzchat.bean.FriendMessage;
 import com.example.lzchat.bean.MessageBean;
 import com.example.lzchat.bean.UserBean;
+import com.example.lzchat.client.receiver.PushReceiver;
 import com.example.lzchat.net.HttpClientUtil;
 import com.example.lzchat.net.NetUtil;
 import com.example.lzchat.utils.GsonTools;
@@ -85,6 +88,26 @@ public class FrindcirclesActivity extends Activity implements IXListViewListener
 	private String beanToJson;
 	
 	private List<FriendMessage> frindlist;
+	private MainListViewAdapter viewAdapter;
+	
+	/**
+	 * 接收CoreService发送过来的广播
+	 */
+	private PushReceiver receiver = new PushReceiver() {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			String action = intent.getAction();
+			LogUtils.i("receive");
+			if (PushReceiver.FRINDCIRCLES.equals(action)) {
+				System.out.println("FrindcirclesActivity_PushReceiver");
+//				loadData();
+				FriendMessage friendMessage = (FriendMessage) intent.getSerializableExtra("frindcircles");
+				frindlist.add(0, friendMessage);
+				viewAdapter.notifyDataSetChanged();
+			}
+		}
+	};
 	
 	Handler handler = new Handler() {
 		@Override
@@ -108,6 +131,13 @@ public class FrindcirclesActivity extends Activity implements IXListViewListener
 		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.fragment_frinds);
 		ViewUtils.inject(this);
+		
+		// 动态注册广播接收者
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(PushReceiver.FRINDCIRCLES);
+		registerReceiver(receiver, filter);
+		
+		
 		initView();
 		
 		// TODO 如果有缓存先把缓存用上,在去请求网络
@@ -198,7 +228,8 @@ public class FrindcirclesActivity extends Activity implements IXListViewListener
 	 * 从网络获取到数据在进行初始化
 	 */
 	private void initView2(){
-		mListView.setAdapter(new MainListViewAdapter(this,frindlist));
+		viewAdapter = new MainListViewAdapter(this,frindlist);
+		mListView.setAdapter(viewAdapter);
 		mListView.setXListViewListener(this);
 	}
 
@@ -237,6 +268,12 @@ public class FrindcirclesActivity extends Activity implements IXListViewListener
 	@Override
 	public void onLoadMore() {
 
+	}
+	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		unregisterReceiver(receiver);
 	}
 
 }
