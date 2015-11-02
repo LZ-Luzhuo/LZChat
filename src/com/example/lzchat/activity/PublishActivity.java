@@ -85,13 +85,17 @@ public class PublishActivity extends Activity implements OnClickListener{
 	 * 访问网络发送数据
 	 */
 	private void sendMessage() {
-		if(!NetUtil.checkNet(this))
-			Toast.makeText(this, "请检查网络!", 0);
+		if(!NetUtil.checkNet(this)){
+			progressDialog.dismiss();
+			Toast.makeText(this, "请检查网络!", 0).show();
+			return;
+		}
 		MessageBean messageBean = new MessageBean();
 		String mes = message.getText().toString();
 		if(!TextUtils.isEmpty(mes)){
 			messageBean.message = mes;
 		}else{
+			progressDialog.dismiss();
 			Toast.makeText(this, "内容不能为空!", 0).show();
 			return;
 		}
