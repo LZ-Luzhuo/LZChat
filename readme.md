@@ -1,2 +1,15 @@
-## LZChat(ÏĞÁÄ)
-#### LZChat ÊÇÎÒµÄ¸öÈËÏîÄ¿,ÀàËÆÓÚÎ¢ĞÅÖ®ÀàµÄÁÄÌì¹¤¾ß
+## LZChat(é—²èŠ)
+#### LZChat æ˜¯æˆ‘çš„ä¸ªäººé¡¹ç›®,ç±»ä¼¼äºå¾®ä¿¡ä¹‹ç±»çš„èŠå¤©å·¥å…·
+![](/readme_image/Screenshot_2015-11-02-19-41-16-575.jpeg)
+![](/readme_image/Screenshot_2015-11-02-19-42-19-060.jpeg)
+![](/readme_image/Screenshot_2015-11-02-19-42-28-913.jpeg)
+![](/readme_image/Screenshot_2015-11-02-19-42-41-858.jpeg)
+![](/readme_image/Screenshot_2015-11-02-19-44-35-239.jpeg)
+![](/readme_image/Screenshot_2015-11-02-19-45-52-728.jpeg)
+![](/readme_image/Screenshot_2015-11-02-19-45-48-936.jpeg)
+![](/readme_image/Screenshot_2015-11-02-19-46-51-244.jpeg)
+![](/readme_image/Screenshot_2015-11-02-19-51-40-180.jpeg)
+![](/readme_image/Screenshot_2015-11-02-19-51-35-328.jpeg)
+![](/readme_image/Screenshot_2015-11-02-19-51-44-036.jpeg)
+![](/readme_image/Screenshot_2015-11-02-20-00-04-352.jpeg)
+![](/readme_image/Screenshot_2015-11-02-20-00-11-053.jpeg)
