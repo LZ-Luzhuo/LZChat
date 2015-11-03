@@ -49,7 +49,12 @@ public class GlobalParams {
 	/**
 	 * address
 	 */
-	public static String URL = "http://192.168.0.100:80/LZChatService";
+	public final static String URL = "http://114.215.201.157:80/LZChatService";
+	public final static String ICONURL = URL+"/usericon/";
+	// TCP连接主机地址
+	public final static String dstName = "114.215.201.157";
+	// TCP连接端口
+	public final static int dstPort = 10086;
 	
 	public static String LOGIN = "/UserLogin";
 	
@@ -72,10 +77,7 @@ public class GlobalParams {
 	 * 当前用户昵称
 	 */
 	public static String nickname = "nicheng";
-	// TCP连接主机地址
-	public final static String dstName = "192.168.0.100";
-	// TCP连接端口
-	public final static int dstPort = 10086;
+
 	
 	public static String SEARCHFRIEND = "/Searchfriend";
 }

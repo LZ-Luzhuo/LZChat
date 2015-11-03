@@ -89,7 +89,7 @@ public class RegisterActivity extends Activity implements OnClickListener{
 				
 				if(upDate)
 					updata();//上传照片
-				SharePrefUtil.saveString(RegisterActivity.this, "icon", "http://192.168.0.100/LZChatService/usericon/"+userBeanmsg.phone_num+userBeanmsg.password+".jpg");
+				SharePrefUtil.saveString(RegisterActivity.this, "icon", GlobalParams.ICONURL+userBeanmsg.phone_num+userBeanmsg.password+".jpg");
 				RegisterActivity.this.finish();
 				startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
 				break;
