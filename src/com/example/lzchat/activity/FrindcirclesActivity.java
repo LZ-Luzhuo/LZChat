@@ -238,7 +238,7 @@ public class FrindcirclesActivity extends Activity implements IXListViewListener
 		switch (v.getId()) {
 		// 直接打开发表心情的界面
 		case R.id.personal_publish:
-			startActivity(new Intent(FrindcirclesActivity.this,PublishActivity.class));
+			startActivityForResult(new Intent(FrindcirclesActivity.this,PublishActivity.class),1);
 			break;
 		case R.id.personal_return:
 			FrindcirclesActivity.this.finish();
@@ -255,7 +255,7 @@ public class FrindcirclesActivity extends Activity implements IXListViewListener
 	public void onRefresh() {
 
 		pb_head.setVisibility(View.VISIBLE);
-		
+		uploadData();
 		mHandler.postDelayed(new Runnable() {
 			@Override
 			public void run() {
@@ -274,6 +274,14 @@ public class FrindcirclesActivity extends Activity implements IXListViewListener
 	protected void onDestroy() {
 		super.onDestroy();
 		unregisterReceiver(receiver);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		super.onActivityResult(requestCode, resultCode, data);
+		if(requestCode == 1){
+			uploadData();
+		}
 	}
 
 }

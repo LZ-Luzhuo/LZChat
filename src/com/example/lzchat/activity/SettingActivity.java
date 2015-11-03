@@ -59,9 +59,9 @@ public class SettingActivity extends Activity implements OnClickListener{
 		case R.id.setting_exit:
 			// 清除一些记录
 			SharePrefUtil.saveString(this, ConstantValue.LOGIN, "");
-			SharePrefUtil.saveString(this, "lastPassword", "");
-			SharePrefUtil.saveString(this, "avatar", "");
-			SharePrefUtil.saveString(this, "icon", "");
+//			SharePrefUtil.saveString(this, "lastPassword", "");
+//			SharePrefUtil.saveString(this, "avatar", "");
+//			SharePrefUtil.saveString(this, "icon", "");
 			SettingActivity.this.finish();
 			if(GlobalParams.hm != null)
 				GlobalParams.hm.finish();

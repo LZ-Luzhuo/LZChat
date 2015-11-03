@@ -2,6 +2,7 @@ package com.example.lzchat.activity;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -49,6 +50,7 @@ public class PublishActivity extends Activity implements OnClickListener{
 	@ViewInject(R.id.message)
 	private EditText message;
 	private ProgressDialog progressDialog;
+	private MessageBean messageBean;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +92,7 @@ public class PublishActivity extends Activity implements OnClickListener{
 			Toast.makeText(this, "请检查网络!", 0).show();
 			return;
 		}
-		MessageBean messageBean = new MessageBean();
+		messageBean = new MessageBean();
 		String mes = message.getText().toString();
 		if(!TextUtils.isEmpty(mes)){
 			messageBean.message = mes;
@@ -124,8 +126,8 @@ public class PublishActivity extends Activity implements OnClickListener{
 				clientUtil.sendXml(GlobalParams.URL+GlobalParams.MESSAGE, mess);
 				progressDialog.dismiss();
 				
-				Request request = new TextRequest(GlobalParams.sender, GlobalParams.token, "ALL", mess);
-				ConnectorManager.getInstance().putRequest(request);
+//				Request request = new TextRequest(GlobalParams.sender, GlobalParams.token, "ALL", mess);
+//				ConnectorManager.getInstance().putRequest(request);
 				PublishActivity.this.finish();
 			}
 		}.start();
