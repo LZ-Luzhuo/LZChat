@@ -34,9 +34,8 @@
             android:id="@+id/contact_item_new_friend_dot"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="30dp"
+            android:layout_marginLeft="150dp"
             android:background="@drawable/icon_dot"
             android:visibility="gone" />
     </RelativeLayout>
