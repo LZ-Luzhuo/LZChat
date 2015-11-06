@@ -1,6 +1,5 @@
 package com.example.lzchat.activity;
 
-import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.graphics.Bitmap.Config;
@@ -17,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
+import com.example.lzchat.base.BaseActivity;
 import com.example.lzchat.bean.Friend;
 import com.example.lzchat.bean.Invitation;
 import com.example.lzchat.client.ConnectorManager;
@@ -46,7 +46,7 @@ import com.lidroid.xutils.util.LogUtils;
  * 
  * =================================================
  **/
-public class FriendNewActivity extends Activity implements OnClickListener{
+public class FriendNewActivity extends BaseActivity implements OnClickListener{
 	private ListView listView;
 	private FriendNewAdapter adapter;
 	

@@ -1,8 +1,6 @@
 package com.example.lzchat.activity;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -15,10 +13,8 @@ import android.widget.Toast;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
+import com.example.lzchat.base.BaseActivity;
 import com.example.lzchat.bean.MessageBean;
-import com.example.lzchat.client.ConnectorManager;
-import com.example.lzchat.client.request.Request;
-import com.example.lzchat.client.request.TextRequest;
 import com.example.lzchat.net.HttpClientUtil;
 import com.example.lzchat.net.NetUtil;
 import com.example.lzchat.utils.GsonTools;
@@ -42,7 +38,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * 
  * =================================================
  **/
-public class PublishActivity extends Activity implements OnClickListener{
+public class PublishActivity extends BaseActivity implements OnClickListener{
 	@ViewInject(R.id.personal_return)
 	private ImageButton personal_return;
 	@ViewInject(R.id.personal_send)

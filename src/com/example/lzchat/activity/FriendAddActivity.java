@@ -1,15 +1,15 @@
 package com.example.lzchat.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.example.lzchat.R;
+import com.example.lzchat.base.BaseActivity;
 
 /**
  * =================================================
@@ -27,7 +27,7 @@ import com.example.lzchat.R;
  * 
  * =================================================
  **/
-public class FriendAddActivity extends Activity implements OnClickListener{
+public class FriendAddActivity extends BaseActivity implements OnClickListener{
 	private EditText mSearchView;
 	private View mScanView;
 	private ImageView iv_back;

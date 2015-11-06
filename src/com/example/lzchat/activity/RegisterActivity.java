@@ -7,7 +7,6 @@ import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -22,12 +21,12 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
+import com.example.lzchat.base.BaseActivity;
 import com.example.lzchat.bean.UserBean;
 import com.example.lzchat.net.HttpClientUtil;
 import com.example.lzchat.net.NetUtil;
@@ -55,7 +54,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * 
  * =================================================
  **/
-public class RegisterActivity extends Activity implements OnClickListener{
+public class RegisterActivity extends BaseActivity implements OnClickListener{
 	protected static final int SUCCESS = 0;
 	protected static final int FAILURE = 1;
 	@ViewInject(R.id.reg_register_btn)

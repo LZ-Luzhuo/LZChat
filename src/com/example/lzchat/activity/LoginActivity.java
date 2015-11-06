@@ -4,13 +4,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -21,13 +19,13 @@ import android.widget.Toast;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
+import com.example.lzchat.base.BaseActivity;
 import com.example.lzchat.bean.UserBean;
 import com.example.lzchat.net.HttpClientUtil;
 import com.example.lzchat.net.NetUtil;
 import com.example.lzchat.utils.GsonTools;
 import com.example.lzchat.utils.SharePrefUtil;
 import com.lidroid.xutils.ViewUtils;
-import com.lidroid.xutils.http.RequestParams;
 import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 
@@ -47,7 +45,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * 
  * =================================================
  **/
-public class LoginActivity extends Activity implements OnClickListener{
+public class LoginActivity extends BaseActivity implements OnClickListener{
 	protected static final int SUCCESS = 0;
 	protected static final int FAILURE = 1;
 	@ViewInject(R.id.login_password)

@@ -3,15 +3,12 @@ package com.example.lzchat.activity;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.Serializable;
 import java.util.List;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,8 +19,6 @@ import android.view.View.OnClickListener;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -32,9 +27,9 @@ import android.widget.Toast;
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
 import com.example.lzchat.adapter.MainListViewAdapter;
+import com.example.lzchat.base.BaseActivity;
 import com.example.lzchat.bean.FriendMessage;
 import com.example.lzchat.bean.MessageBean;
-import com.example.lzchat.bean.UserBean;
 import com.example.lzchat.client.receiver.PushReceiver;
 import com.example.lzchat.net.HttpClientUtil;
 import com.example.lzchat.net.NetUtil;
@@ -65,7 +60,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * 
  * =================================================
  **/
-public class FrindcirclesActivity extends Activity implements IXListViewListener, OnClickListener {
+public class FrindcirclesActivity extends BaseActivity implements IXListViewListener, OnClickListener {
 	protected static final int SUCCESS = 0;
 	@ViewInject(R.id.personal_return)
 	private ImageView personal_return;

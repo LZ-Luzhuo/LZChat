@@ -1,8 +1,9 @@
 package com.example.lzchat.activity;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.widget.TextView;
+
+import com.example.lzchat.base.BaseActivity;
 
 /**
  * =================================================
@@ -20,7 +21,7 @@ import android.widget.TextView;
  * 
  * =================================================
  **/
-public class AddGroupActivity extends Activity {
+public class AddGroupActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub

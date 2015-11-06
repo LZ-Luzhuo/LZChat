@@ -1,13 +1,11 @@
 package com.example.lzchat.activity;
 
-import android.app.Activity;
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -15,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
+import com.example.lzchat.base.BaseActivity;
 import com.example.lzchat.bean.Friend;
 import com.example.lzchat.bean.Invitation;
 import com.example.lzchat.client.ConnectorManager;
@@ -40,7 +39,7 @@ import com.lidroid.xutils.util.LogUtils;
  * 
  * =================================================
  **/
-public class FriendDetailActivity extends Activity implements OnClickListener{
+public class FriendDetailActivity extends BaseActivity implements OnClickListener{
 	public static final String KEY_ENTER = "enter";
 	public static final String KEY_DATA = "data";
 

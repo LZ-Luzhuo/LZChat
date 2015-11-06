@@ -23,6 +23,7 @@ import android.widget.TextView;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
+import com.example.lzchat.base.BaseActivity;
 import com.example.lzchat.bean.UserBean;
 import com.example.lzchat.net.HttpClientUtil;
 import com.example.lzchat.utils.Base64Coder;
@@ -50,7 +51,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * 
  * =================================================
  **/
-public class PersonalActivity extends Activity implements OnClickListener{
+public class PersonalActivity extends BaseActivity implements OnClickListener{
 	protected static final int SUCCESS = 0;
 	protected static final int FAILURE = 1;
 	@ViewInject(R.id.personal_photo)

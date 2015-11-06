@@ -1,6 +1,6 @@
 package com.example.lzchat.activity;
 
-import android.app.Activity;
+import com.example.lzchat.base.BaseActivity;
 
 /**
  * =================================================
@@ -18,6 +18,6 @@ import android.app.Activity;
  * 
  * =================================================
  **/
-public class Feedback extends Activity{
+public class Feedback extends BaseActivity{
 
 }

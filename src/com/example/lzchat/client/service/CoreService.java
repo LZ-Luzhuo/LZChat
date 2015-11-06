@@ -1,10 +1,10 @@
 package com.example.lzchat.client.service;
 
-import android.app.Service;
 import android.content.Intent;
 import android.os.IBinder;
 
 import com.example.lzchat.GlobalParams;
+import com.example.lzchat.base.BaseService;
 import com.example.lzchat.bean.Friend;
 import com.example.lzchat.bean.FriendMessage;
 import com.example.lzchat.bean.GlobalBean;
@@ -40,7 +40,7 @@ import com.lidroid.xutils.util.LogUtils;
  * 
  * =================================================
  **/
-public class CoreService extends Service implements ConnectorListener {
+public class CoreService extends BaseService implements ConnectorListener {
 	private ConnectorManager connectorManager;
 
 	@Override

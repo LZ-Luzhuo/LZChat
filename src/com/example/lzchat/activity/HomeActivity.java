@@ -3,7 +3,6 @@ package com.example.lzchat.activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,10 +10,12 @@ import android.view.Window;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.lzchat.ChatApplication;
 import com.example.lzchat.ConstantValue;
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
 import com.example.lzchat.activity.popwindow.AddPopWindow;
+import com.example.lzchat.base.BaseActivity;
 import com.example.lzchat.client.service.CoreService;
 import com.example.lzchat.fragment.ChatFragment;
 import com.example.lzchat.fragment.ContacterFragment;
@@ -42,7 +43,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * 
  * =================================================
  **/
-public class HomeActivity extends FragmentActivity implements OnClickListener{
+public class HomeActivity extends BaseActivity implements OnClickListener{
 	@ViewInject(R.id.unread_msg_count)
 	private TextView unread_msg_count;
 	@ViewInject(R.id.unread_address_count)
@@ -224,6 +225,7 @@ public class HomeActivity extends FragmentActivity implements OnClickListener{
 		super.onDestroy();
 		// 关闭服务
 		stopService(new Intent(this, CoreService.class));
+		((ChatApplication) getApplication()).closeApplication();
 	}
 	
 }

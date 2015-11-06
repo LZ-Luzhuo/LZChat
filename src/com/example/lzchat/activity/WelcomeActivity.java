@@ -1,12 +1,10 @@
 package com.example.lzchat.activity;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
@@ -15,6 +13,7 @@ import android.widget.Button;
 import com.example.lzchat.ConstantValue;
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
+import com.example.lzchat.base.BaseActivity;
 import com.example.lzchat.utils.SharePrefUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.util.LogUtils;
@@ -36,7 +35,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * 
  * =================================================
  **/
-public class WelcomeActivity extends Activity {
+public class WelcomeActivity extends BaseActivity {
 	protected static final int SUCCESS = 0;
 	protected static final int FAILURE = 1;
 	

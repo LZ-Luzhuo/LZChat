@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import com.example.lzchat.ConstantValue;
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
+import com.example.lzchat.base.BaseActivity;
 import com.example.lzchat.utils.SharePrefUtil;
 import com.lidroid.xutils.ViewUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
@@ -32,7 +33,7 @@ import com.lidroid.xutils.view.annotation.ViewInject;
  * 
  * =================================================
  **/
-public class SettingActivity extends Activity implements OnClickListener{
+public class SettingActivity extends BaseActivity implements OnClickListener{
 	@ViewInject(R.id.setting_exit)
 	private LinearLayout setting_exit;
 	@ViewInject(R.id.personal_return)

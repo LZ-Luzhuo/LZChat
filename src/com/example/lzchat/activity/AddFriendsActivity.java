@@ -1,5 +1,7 @@
 package com.example.lzchat.activity;
 
+import com.example.lzchat.base.BaseActivity;
+
 import android.app.Activity;
 
 /**
@@ -18,6 +20,6 @@ import android.app.Activity;
  * 
  * =================================================
  **/
-public class AddFriendsActivity extends Activity{
+public class AddFriendsActivity extends BaseActivity{
 
 }

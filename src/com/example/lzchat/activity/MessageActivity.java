@@ -5,7 +5,6 @@ package com.example.lzchat.activity;
 import java.io.File;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -18,9 +17,9 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
-import android.view.Window;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
@@ -32,6 +31,7 @@ import android.widget.Toast;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
+import com.example.lzchat.base.BaseActivity;
 import com.example.lzchat.bean.Friend;
 import com.example.lzchat.bean.Message;
 import com.example.lzchat.client.ConnectorManager;
@@ -47,7 +47,7 @@ import com.example.lzchat.utils.SharePrefUtil;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.util.LogUtils;
 
-public class MessageActivity extends Activity implements OnClickListener, TextWatcher{
+public class MessageActivity extends BaseActivity implements OnClickListener, TextWatcher{
 	private String messager;
 	private ListView listView;
 	private MessageAdapter adapter;
