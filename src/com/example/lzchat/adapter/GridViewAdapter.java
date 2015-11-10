@@ -12,6 +12,7 @@ import android.widget.ImageView;
 
 import com.example.lzchat.R;
 import com.example.lzchat.bean.FriendMessage;
+import com.example.lzchat.utils.AsyncImageLoderUtil;
 import com.lidroid.xutils.BitmapUtils;
 
 public class GridViewAdapter extends BaseAdapter {
@@ -40,12 +41,12 @@ public class GridViewAdapter extends BaseAdapter {
 
 	@Override
 	public Object getItem(int arg0) {
-		return null;
+		return (message.messageImage != null ? (message.messageImage.length>9 ? 9: message.messageImage[arg0] ) : null);
 	}
 
 	@Override
 	public long getItemId(int arg0) {
-		return 0;
+		return arg0;
 	}
 
 	public class ViewHolder {
@@ -68,9 +69,7 @@ public class GridViewAdapter extends BaseAdapter {
 			viewHolder = (ViewHolder) convertView.getTag();
 		}
 		
-		BitmapUtils bitmapUtils = new BitmapUtils(context);
-		bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
-		bitmapUtils.display(viewHolder.mImageView, message.messageImage[arg0]);
+		AsyncImageLoderUtil.getInstance().displayListItemImage(message.messageImage[arg0], viewHolder.mImageView);
 		
 		return convertView;
 	}

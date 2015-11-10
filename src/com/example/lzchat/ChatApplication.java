@@ -4,6 +4,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
+import com.example.lzchat.utils.AsyncImageLoderUtil;
+
 import android.app.Activity;
 import android.app.Application;
 import android.app.Service;
@@ -33,7 +35,7 @@ public class ChatApplication extends Application {
 	@Override
 	public void onCreate() {
 		super.onCreate();
-
+		AsyncImageLoderUtil.init(this);
 		Log.d("ChatApplication", "init");
 	}
 

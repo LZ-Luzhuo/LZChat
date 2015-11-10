@@ -26,6 +26,7 @@ import android.widget.Toast;
 
 import com.example.lzchat.GlobalParams;
 import com.example.lzchat.R;
+import com.example.lzchat.adapter.GridViewAdapter;
 import com.example.lzchat.adapter.MainListViewAdapter;
 import com.example.lzchat.base.BaseActivity;
 import com.example.lzchat.bean.FriendMessage;
@@ -41,6 +42,7 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.lidroid.xutils.BitmapUtils;
 import com.lidroid.xutils.ViewUtils;
+import com.lidroid.xutils.bitmap.PauseOnScrollListener;
 import com.lidroid.xutils.util.LogUtils;
 import com.lidroid.xutils.view.annotation.ViewInject;
 

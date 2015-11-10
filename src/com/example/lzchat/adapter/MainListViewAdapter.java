@@ -19,6 +19,7 @@ import com.example.lzchat.R;
 import com.example.lzchat.bean.Friend;
 import com.example.lzchat.bean.FriendMessage;
 import com.example.lzchat.dao.FriendDao;
+import com.example.lzchat.utils.AsyncImageLoderUtil;
 import com.example.lzchat.utils.SharePrefUtil;
 import com.example.lzchat.view.CommentListView;
 import com.example.lzchat.view.GridView;
@@ -119,9 +120,11 @@ public class MainListViewAdapter extends BaseAdapter {
 				FriendDao dao = new FriendDao(context);
 				Friend friend = dao.queryFriendByAccount(GlobalParams.sender, message.phone_num);
 				if(friend!=null){
-					BitmapUtils bitmapUtils = new BitmapUtils(context);
-					bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
-					bitmapUtils.display(viewHolder.photo, friend.icon);
+//					BitmapUtils bitmapUtils = new BitmapUtils(context);
+//					bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
+//					bitmapUtils.display(viewHolder.photo, friend.icon);
+					AsyncImageLoderUtil.getInstance().displayListItemImage(friend.icon, viewHolder.photo);
+
 				}else{
 					// 如果没有头像或不是朋友关系,则设置默认头像
 					viewHolder.photo.setImageResource(R.drawable.profile_touxiang);
@@ -129,9 +132,11 @@ public class MainListViewAdapter extends BaseAdapter {
 			}
 		}else{
 			if(!TextUtils.isEmpty(message.photo)){
-				BitmapUtils bitmapUtils = new BitmapUtils(context);
-				bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
-				bitmapUtils.display(viewHolder.photo, message.photo);
+//				BitmapUtils bitmapUtils = new BitmapUtils(context);
+//				bitmapUtils.configDefaultBitmapConfig(Config.RGB_565);
+//				bitmapUtils.display(viewHolder.photo, message.photo);
+				
+				AsyncImageLoderUtil.getInstance().displayListItemImage(message.photo, viewHolder.photo);
 			}else{
 				// 没有头像则设置默认头像
 				viewHolder.photo.setImageResource(R.drawable.profile_touxiang);
