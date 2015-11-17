@@ -15,10 +15,6 @@
     <!-- Application theme. -->
     <style name="AppTheme" parent="AppBaseTheme">
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowAnimationStyle">@android:style/Animation</item>
-        <item name="android:colorBackgroundCacheHint">@null</item>
     </style>
     
     <style name="ActionSheetDialogStyle" parent="@android:style/Theme.Dialog">
