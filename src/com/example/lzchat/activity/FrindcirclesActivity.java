@@ -115,8 +115,12 @@ public class FrindcirclesActivity extends BaseActivity implements IXListViewList
 				MessageBean messageBean = (MessageBean) msg.obj;
 				SharePrefUtil.saveString(FrindcirclesActivity.this, "frindcache", messageBean.message);
 				Gson gson = new Gson();
-				frindlist = gson.fromJson(messageBean.message, new TypeToken<List<FriendMessage>>() {}.getType());
-				initView2();
+				List<FriendMessage> newfrindlist = gson.fromJson(messageBean.message, new TypeToken<List<FriendMessage>>() {}.getType());
+//				initView2();
+				//更新数据
+				frindlist.clear();
+				frindlist.addAll(newfrindlist);
+				viewAdapter.notifyDataSetChanged();
 				break;
 			}
 		}
